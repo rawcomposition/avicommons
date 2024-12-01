@@ -42,6 +42,7 @@ export const LicenseLabel: Record<License, string> = {
 
 export type SpeciesT = {
   _id: string;
+  sourceKey: string;
   hasImg: boolean;
   name: string;
   sciName: string;

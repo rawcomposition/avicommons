@@ -1,3 +1,5 @@
+import { createHash } from "crypto";
+
 type Params = {
   [key: string]: string | number | boolean;
 };
@@ -29,6 +31,7 @@ export const get = async (url: string, params: Params = {}) => {
     if (res.status === 504) throw new Error("Operation timed out. Please try again.");
     throw new Error(json.error || "An error ocurred");
   }
+
   return json;
 };
 
@@ -37,3 +40,8 @@ export const generateRandomId = (length: number = 6) => {
     .toString()
     .slice(2, length + 2);
 };
+
+export function generateHash(input: string, length: number = 16): string {
+  const hash = createHash("sha256").update(input).digest("base64");
+  return hash.replace(/[^a-zA-Z0-9]/g, "").slice(0, length);
+}

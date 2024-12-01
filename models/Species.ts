@@ -7,6 +7,7 @@ const SpeciesSchema = new Schema({
     type: String,
     required: true,
   },
+  sourceKey: String,
   hasImg: {
     type: Boolean,
     default: false,

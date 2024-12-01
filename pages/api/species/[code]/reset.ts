@@ -1,9 +1,13 @@
 import connect from "lib/mongo";
 import Species from "models/Species";
-import secureApi from "lib/secureApi";
+import type { NextApiRequest, NextApiResponse } from "next";
 
-export default secureApi(async (req, res, token) => {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
   const { code } = req.query;
+
+  if (process.env.NODE_ENV !== "development") {
+    return res.status(403).json({ success: false, error: "Not allowed" });
+  }
 
   try {
     await connect();
@@ -29,4 +33,4 @@ export default secureApi(async (req, res, token) => {
   } catch (error: any) {
     res.status(500).json({ error: error.message });
   }
-}, "admin");
+}
