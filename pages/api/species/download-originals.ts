@@ -5,9 +5,9 @@ import { getSourceImgUrl } from "lib/species";
 import path from "path";
 import fs from "fs";
 
-const FILTER_SOURCE = "flickr";
+const FILTER_SOURCE = "inat";
 const LIMIT = 2000;
-const DELAY = 30000;
+const DELAY = 0;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
   if (process.env.NODE_ENV !== "development") {
@@ -20,6 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     {
       crop: { $exists: true },
       source: FILTER_SOURCE,
+      downloadedAt: { $exists: false },
     },
     ["source", "sourceId", "sourceKey", "iNatFileExt"]
   )

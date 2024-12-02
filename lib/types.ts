@@ -75,3 +75,22 @@ export type SpeciesInput = {
   iNatUserId?: string;
   flip?: boolean;
 };
+
+export type Stats = {
+  total: number;
+  withImg: number;
+  percent: string;
+  license: {
+    id: string;
+    label: string;
+    count: number;
+    percent: string;
+  }[];
+  source: {
+    id: string;
+    label: string;
+    count: number;
+    percent: string;
+  }[];
+  taxonVersions: string[];
+};

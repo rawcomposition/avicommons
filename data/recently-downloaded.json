@@ -1,0 +1,66 @@
+[
+  {
+    "code": "slbtin1",
+    "name": "Slaty-breasted Tinamou",
+    "sciName": "Crypturellus boucardi",
+    "license": "cc-by",
+    "key": "176516122",
+    "author": "Chloe and Trevor Van Loon"
+  },
+  {
+    "code": "undtin1",
+    "name": "Undulated Tinamou",
+    "sciName": "Crypturellus undulatus",
+    "license": "cc-by-nc",
+    "key": "424678114",
+    "author": "Rajan Rao"
+  },
+  {
+    "code": "tabtin1",
+    "name": "Tawny-breasted Tinamou",
+    "sciName": "Nothocercus julius",
+    "license": "cc-by",
+    "key": "383965158",
+    "author": "Francisco Sánchez Karste"
+  },
+  {
+    "code": "whttin1",
+    "name": "White-throated Tinamou",
+    "sciName": "Tinamus guttatus",
+    "license": "cc-by-nc",
+    "key": "5489267",
+    "author": "Cullen Hanks"
+  },
+  {
+    "code": "reltin1",
+    "name": "Red-legged Tinamou",
+    "sciName": "Crypturellus erythropus",
+    "license": "cc-by-nc",
+    "key": "150456397",
+    "author": "ddavilareyes"
+  },
+  {
+    "code": "grerhe1",
+    "name": "Greater Rhea",
+    "sciName": "Rhea americana",
+    "license": "CC BY-SA 3.0",
+    "key": "A5QnQeIhI63vWUyM",
+    "author": "Rufus46"
+  },
+  {
+    "code": "hootin1",
+    "name": "Hooded Tinamou",
+    "sciName": "Nothocercus nigrocapillus",
+    "license": "cc0",
+    "key": "jsMfNBC5dOUpa3wx",
+    "author": "Joseph Smit"
+  },
+  {
+    "code": "yeltin1",
+    "name": "Yellow-legged Tinamou",
+    "sciName": "Crypturellus noctivagus",
+    "license": "cc-by-nc",
+    "key": "119016879",
+    "author": "Luciano Bernardes"
+  }
+]
