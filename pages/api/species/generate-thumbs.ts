@@ -5,6 +5,8 @@ import { IMG_SIZES, getSourceImgUrl } from "lib/species";
 import sharp from "sharp";
 import path from "path";
 
+const LIMIT = 2;
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
   if (process.env.NODE_ENV !== "development") {
     return res.status(403).json({ success: false, error: "Not allowed" });
@@ -12,31 +14,24 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
   await connect();
 
-  const species = await Species.find({
-    downloadedAt: { $exists: false },
-    crop: { $exists: true },
-  })
-    .sort({ order: 1 })
-    .lean();
+  const species = await Species.find({}).sort({ order: 1 }).limit(LIMIT).lean();
 
-  for (const { source, sourceId, crop, _id, iNatFileExt, flip } of species) {
-    let original = getSourceImgUrl({ source, sourceId, size: 2400, ext: iNatFileExt });
-    if (!original) {
-      console.log("No original for", sourceId);
+  for (const { source, sourceId, sourceKey, crop, _id, iNatFileExt, flip } of species) {
+    const filename = `${_id}-${sourceKey}`;
+    const fs = require("fs").promises;
+    const originalPath = path.join(process.cwd(), "originals", `${filename}.jpg`);
+
+    let buffer;
+    try {
+      buffer = await fs.readFile(originalPath);
+    } catch (error) {
+      console.log("ORIGINAL NOT FOUND:", _id);
       continue;
     }
-
-    const originalRes = await fetch(original);
-    if (!originalRes.ok) {
-      console.log("FAILED:", _id, original);
-      continue;
-    }
-
-    const buffer = await originalRes.arrayBuffer();
 
     await Promise.all(
       IMG_SIZES.map(async (size) => {
-        const outputPath = path.join(process.cwd(), "public", "species-images", `${_id}-${size}.jpg`);
+        const outputPath = path.join(process.cwd(), "resized", `${filename}-${size}.jpg`);
         const image = sharp(buffer);
 
         await image
