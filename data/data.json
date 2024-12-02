@@ -403,7 +403,7 @@
     "code": "dwatin1",
     "name": "Dwarf Tinamou",
     "sciName": "Taoniscus nanus",
-    "license": "cc-by-sa-2.5 2.5",
+    "license": "CC BY-SA 2.5",
     "key": "6Ku272JNKK2RFEq4",
     "author": "Alice P. Navarro"
   },
@@ -22731,8 +22731,8 @@
     "code": "graeao1",
     "name": "Grayish Eagle-Owl",
     "sciName": "Bubo cinerascens",
-    "license": "",
-    "key": "ZnhsVSC6Mauoehj5",
+    "license": "cc-by-nc",
+    "key": "6162037",
     "author": "Nik Borrow"
   },
   {
@@ -27835,7 +27835,7 @@
     "code": "occpic1",
     "name": "Ochre-collared Piculet",
     "sciName": "Picumnus temminckii",
-    "license": "",
+    "license": "CC BY-SA 2.0",
     "key": "I21gE1msvNQo5lEm",
     "author": "Dario Sanches"
   },
@@ -30795,7 +30795,7 @@
     "code": "antpar1",
     "name": "Antipodes Parakeet",
     "sciName": "Cyanoramphus unicolor",
-    "license": "cc-by-sa-3.0 3.0",
+    "license": "CC BY-SA 3.0",
     "key": "ULV3U6lXHpN296qe",
     "author": "Peter Halasz"
   },
@@ -45419,7 +45419,7 @@
     "code": "chcbab2",
     "name": "Chestnut-crowned Babbler",
     "sciName": "Pomatostomus ruficeps",
-    "license": "ccy-by",
+    "license": "cc-by",
     "key": "TE0lf5FRq7g9meVN",
     "author": "Chris Tzaros"
   },
@@ -58275,7 +58275,7 @@
     "code": "shawar1",
     "name": "Shade Warbler",
     "sciName": "Horornis parens",
-    "license": "",
+    "license": "cc0",
     "key": "AZ4Fb1DeWELaXhCq",
     "author": "Internet Archive Book Images"
   },

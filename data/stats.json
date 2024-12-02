@@ -4,65 +4,41 @@
   "percent": "90.5%",
   "license": [
     {
-      "id": "cc-by-nc",
-      "label": "CC BY-NC",
-      "count": 7353,
-      "percent": "66.0%"
-    },
-    {
-      "id": "cc-by-sa",
-      "label": "CC BY-SA",
-      "count": 868,
-      "percent": "7.8%"
-    },
-    {
       "id": "cc0",
       "label": "CC0",
-      "count": 801,
+      "count": 802,
       "percent": "7.2%"
     },
     {
       "id": "cc-by",
       "label": "CC BY",
-      "count": 922,
+      "count": 923,
       "percent": "8.3%"
     },
     {
-      "id": "cc-by-sa-2.5",
-      "label": "cc-by-sa-2.5",
-      "count": 1,
-      "percent": "0.0%"
+      "id": "cc-by-nc",
+      "label": "CC BY-NC",
+      "count": 7354,
+      "percent": "66.0%"
+    },
+    {
+      "id": "cc-by-sa",
+      "label": "CC BY-SA",
+      "count": 871,
+      "percent": "7.8%"
     },
     {
       "id": "cc-by-nc-sa",
       "label": "CC BY-NC-SA",
       "count": 140,
       "percent": "1.3%"
-    },
-    {
-      "id": "",
-      "label": "",
-      "count": 3,
-      "percent": "0.0%"
-    },
-    {
-      "id": "cc-by-sa-3.0",
-      "label": "cc-by-sa-3.0",
-      "count": 1,
-      "percent": "0.0%"
-    },
-    {
-      "id": "ccy-by",
-      "label": "ccy-by",
-      "count": 1,
-      "percent": "0.0%"
     }
   ],
   "source": [
     {
       "id": "inat",
       "label": "iNaturalist",
-      "count": 9023,
+      "count": 9024,
       "percent": "81.0%"
     },
     {
@@ -74,7 +50,7 @@
     {
       "id": "flickr",
       "label": "Flickr",
-      "count": 48,
+      "count": 47,
       "percent": "0.4%"
     }
   ],

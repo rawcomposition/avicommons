@@ -57,9 +57,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     return acc;
   }, [] as Stats["license"]);
 
-  licenseStats.forEach((l) => {
-    l.percent = ((l.count / totalSpecies) * 100).toFixed(1) + "%";
-  });
+  licenseStats
+    .sort((a, b) => a.label.length - b.label.length)
+    .forEach((l) => {
+      l.percent = ((l.count / totalSpecies) * 100).toFixed(1) + "%";
+    });
 
   const sourceStats = species.reduce((acc, { source }) => {
     const sourceEntry = acc.find((s) => s.id === source);

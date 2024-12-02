@@ -1,5 +1,13 @@
 [
   {
+    "code": "graeao1",
+    "name": "Grayish Eagle-Owl",
+    "sciName": "Bubo cinerascens",
+    "license": "cc-by-nc",
+    "key": "6162037",
+    "author": "Nik Borrow"
+  },
+  {
     "code": "bubtan2",
     "name": "Burnished-buff Tanager",
     "sciName": "Stilpnia cayana",
@@ -54,13 +62,5 @@
     "license": "CC BY-NC 2.0",
     "key": "409459430",
     "author": "joseluisblazquez"
-  },
-  {
-    "code": "drbpyt1",
-    "name": "Drab-breasted Pygmy-Tyrant",
-    "sciName": "Hemitriccus diops",
-    "license": "CC BY-NC 4.0",
-    "key": "381165658",
-    "author": "Renato dos Santos"
   }
 ]

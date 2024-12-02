@@ -21,7 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const fs = require("fs").promises;
     const originalPath = path.join(process.cwd(), "originals", `${filename}.jpg`);
 
-    let buffer;
+    let buffer: Buffer;
     try {
       buffer = await fs.readFile(originalPath);
     } catch (error) {
