@@ -8,7 +8,6 @@ import AdminPage from "components/AdminPage";
 import { getSourceImgUrl } from "lib/species";
 import clsx from "clsx";
 import connect from "lib/mongo";
-import XMark from "icons/XMark";
 import Families from "data/taxon-families.json";
 import SelectBasic from "components/ReactSelectStyled";
 import { useRouter } from "next/router";
@@ -102,7 +101,7 @@ export default function SpeciesList({
           {species.map((species, index) => (
             <div key={species._id} className="flex items-center gap-4 bg-gray-100/80 p-4 rounded-md">
               <Link href={`/species/${species._id}/edit`} target="_blank" className="flex-shrink-0">
-                {species.hasImg && (species.downloadedAt || !species.crop) ? (
+                {species.crop && species.downloadedAt ? (
                   <div className="relative">
                     <img
                       src={
@@ -119,15 +118,10 @@ export default function SpeciesList({
                       loading="lazy"
                       className="aspect-[4/3] object-cover w-[100px] rounded-md"
                     />
-                    {!species.crop && (
-                      <div className="absolute top-0 left-0 bg-white/50 w-5 h-5 flex justify-center items-center rounded-br">
-                        <XMark className="text-red-500" />
-                      </div>
-                    )}
                   </div>
                 ) : (
                   <div className="aspect-[4/3] flex items-center text-gray-500 text-sm justify-center w-[100px] rounded-md bg-gray-200">
-                    {!species.hasImg ? "No Image" : "Pending"}
+                    {!species.crop ? "No Image" : "Pending"}
                   </div>
                 )}
               </Link>
@@ -153,7 +147,7 @@ export default function SpeciesList({
                     href={`/species/${species._id}/edit`}
                     target="_blank"
                   >
-                    {species.hasImg ? "Edit Image" : "Add Image"}
+                    {species.crop ? "Edit Image" : "Add Image"}
                   </Link>
                   {!species.crop && (
                     <>
@@ -243,11 +237,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   await connect();
   const totalCount = await Species.countDocuments({});
   const filteredCount = await Species.countDocuments(query);
-  const withImgCount = await Species.countDocuments({ hasImg: true });
-  const croppedCount = await Species.countDocuments({ crop: { $exists: true } });
+  const withImgCount = await Species.countDocuments({ crop: { $exists: true } });
   const totalPages = Math.ceil(filteredCount / limit);
   const percentWithImg = ((withImgCount / totalCount) * 100).toFixed(1);
-  const percentCropped = ((croppedCount / withImgCount) * 100).toFixed(1);
   const startCount = (page - 1) * limit;
 
   const speciesRes = await Species.find(query, [
@@ -255,7 +247,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     "name",
     "source",
     "sourceId",
-    "hasImg",
     "sciName",
     "iNatFileExt",
     "downloadedAt",
@@ -275,7 +266,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       currentPage: page,
       totalPages,
       percentWithImg,
-      percentCropped,
       totalCount,
       filteredCount,
       withoutImgCount: totalCount - withImgCount,

@@ -37,7 +37,7 @@ export default function Import({ data, code }: Props) {
   const router = useRouter();
 
   const form = useForm<SpeciesInput>({
-    defaultValues: data.hasImg
+    defaultValues: data.crop
       ? {
           source: data.source,
           sourceId: data.sourceId,

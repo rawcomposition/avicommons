@@ -6,7 +6,7 @@ import path from "path";
 import fs from "fs";
 
 const FILTER_SOURCE = "inat";
-const LIMIT = 2000;
+const LIMIT = 10000;
 const DELAY = 0;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {

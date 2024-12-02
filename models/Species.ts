@@ -8,10 +8,6 @@ const SpeciesSchema = new Schema({
     required: true,
   },
   sourceKey: String,
-  hasImg: {
-    type: Boolean,
-    default: false,
-  },
   name: {
     type: String,
     required: true,

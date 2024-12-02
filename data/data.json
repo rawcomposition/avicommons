@@ -7035,9 +7035,9 @@
     "code": "cbgcuc1",
     "name": "Coral-billed Ground-Cuckoo",
     "sciName": "Carpococcyx renauldi",
-    "license": "null 3.0",
-    "key": "46227060",
-    "author": "Leonard Worthington"
+    "license": "CC BY-NC 3.0",
+    "key": "298065682",
+    "author": "paul_faz"
   },
   {
     "code": "crecou1",
@@ -7216,14 +7216,6 @@
     "author": "Nik Borrow"
   },
   {
-    "code": "reccou1",
-    "name": "Red-capped Coua",
-    "sciName": "Coua ruficeps",
-    "license": "CC BY 3.0",
-    "key": "3426203",
-    "author": "Nigel Voaden"
-  },
-  {
     "code": "cotcou1",
     "name": "Coppery-tailed Coucal",
     "sciName": "Centropus cupreicaudus",
@@ -7334,14 +7326,6 @@
     "license": "CC BY-NC 2.0",
     "key": "353438219",
     "author": "milygray"
-  },
-  {
-    "code": "whbcou1",
-    "name": "White-browed Coucal",
-    "sciName": "Centropus superciliosus",
-    "license": "CC BY-NC 2.0",
-    "key": "415326134",
-    "author": "Joni Overbosch"
   },
   {
     "code": "rafmal1",
@@ -8132,8 +8116,8 @@
     "name": "Malaysian Eared-Nightjar",
     "sciName": "Lyncornis temminckii",
     "license": "cc-by-nc",
-    "key": "437240105",
-    "author": "Sebastian Ow"
+    "key": "444564291",
+    "author": "Allen Lyu"
   },
   {
     "code": "grenig1",
@@ -8291,9 +8275,9 @@
     "code": "bawnig3",
     "name": "Tschudi's Nightjar",
     "sciName": "Quechuavis decussata",
-    "license": "cc-by-nc",
-    "key": "354606537",
-    "author": "Nicolás Villaseca Merino"
+    "license": "cc-by-sa",
+    "key": "225620698",
+    "author": "Thibaud Aronson"
   },
   {
     "code": "litnig1",
@@ -9304,14 +9288,6 @@
     "author": "Anderson Sandro"
   },
   {
-    "code": "astswi1",
-    "name": "Ashy-tailed Swift",
-    "sciName": "Chaetura andrei",
-    "license": "cc-by-nc",
-    "key": "190899994",
-    "author": "Lilian Tomazelli"
-  },
-  {
     "code": "sicswi1",
     "name": "Sick's Swift",
     "sciName": "Chaetura meridionalis",
@@ -9528,22 +9504,6 @@
     "author": "Forest Botial-Jarvis"
   },
   {
-    "code": "molswi4",
-    "name": "Sulawesi Swiftlet",
-    "sciName": "Aerodramus sororum",
-    "license": "cc-by-nc",
-    "key": "421571409",
-    "author": "Nik Borrow"
-  },
-  {
-    "code": "molswi3",
-    "name": "Halmahera Swiftlet",
-    "sciName": "Aerodramus infuscatus",
-    "license": "cc-by-nc",
-    "key": "366598024",
-    "author": "Stephen John Davies"
-  },
-  {
     "code": "palswi2",
     "name": "Ameline Swiftlet",
     "sciName": "Aerodramus amelis",
@@ -9564,8 +9524,8 @@
     "name": "Mossy-nest Swiftlet",
     "sciName": "Aerodramus salangana",
     "license": "CC BY-NC 2.0",
-    "key": "277959311",
-    "author": "Scott Bowers"
+    "key": "62102563",
+    "author": "Desita Dyah D A Kusumaningrum"
   },
   {
     "code": "palswi1",
@@ -9648,14 +9608,6 @@
     "author": "wimvz"
   },
   {
-    "code": "ednswi1",
-    "name": "White-nest Swiftlet",
-    "sciName": "Aerodramus fuciphagus",
-    "license": "CC BY-NC 2.0",
-    "key": "279211298",
-    "author": "Forest Botial-Jarvis"
-  },
-  {
     "code": "aleswi1",
     "name": "Cape Verde Swift",
     "sciName": "Apus alexandri",
@@ -9670,14 +9622,6 @@
     "license": "CC BY-SA 2.0",
     "key": "HGh6NeY8WenHnvhL",
     "author": "pau.artigas"
-  },
-  {
-    "code": "gerswi1",
-    "name": "Germain's Swiftlet",
-    "sciName": "Aerodramus germani",
-    "license": "CC BY-NC 4.0",
-    "key": "400179121",
-    "author": "Zongzhuang Liu"
   },
   {
     "code": "plaswi1",
@@ -11995,9 +11939,9 @@
     "code": "glbeme1",
     "name": "Glittering-bellied Emerald",
     "sciName": "Chlorostilbon lucidus",
-    "license": "null 3.0",
-    "key": "251801157",
-    "author": "Alenilson"
+    "license": "CC BY-NC 3.0",
+    "key": "322431571",
+    "author": "Leonardo Guinez"
   },
   {
     "code": "shteme1",
@@ -16544,14 +16488,6 @@
     "author": "Alex Shure"
   },
   {
-    "code": "hergul",
-    "name": "Herring Gull",
-    "sciName": "Larus argentatus",
-    "license": "CC BY-SA 3.0",
-    "key": "utLiBEIL8TGrSCwX",
-    "author": "Kulac"
-  },
-  {
     "code": "glagul",
     "name": "Glaucous Gull",
     "sciName": "Larus hyperboreus",
@@ -17862,14 +17798,6 @@
     "license": "CC BY-NC 2.0",
     "key": "370258823",
     "author": "Monica Knipler"
-  },
-  {
-    "code": "corshe",
-    "name": "Cory's Shearwater",
-    "sciName": "Calonectris diomedea",
-    "license": "CC BY-NC 4.0",
-    "key": "312408035",
-    "author": "Luke Foster"
   },
   {
     "code": "tripet1",
@@ -20187,9 +20115,9 @@
     "code": "grhkit1",
     "name": "Gray-headed Kite",
     "sciName": "Leptodon cayanensis",
-    "license": "null 4.0",
-    "key": "164454113",
-    "author": "Eden Fontes"
+    "license": "CC BY-NC 4.0",
+    "key": "221953313",
+    "author": "John Serrao"
   },
   {
     "code": "whckit1",
@@ -21140,8 +21068,8 @@
     "name": "Madagascar Sparrowhawk",
     "sciName": "Accipiter madagascariensis",
     "license": "CC BY-NC 2.0",
-    "key": "75279309",
-    "author": "gillbsydney"
+    "key": "13203112",
+    "author": "leithallb"
   },
   {
     "code": "eurspa1",
@@ -22107,9 +22035,9 @@
     "code": "brnowl",
     "name": "American Barn Owl",
     "sciName": "Tyto furcata",
-    "license": "cc-by",
-    "key": "174737078",
-    "author": "Frank Sengpiel"
+    "license": "cc-by-nc",
+    "key": "101284734",
+    "author": "Alex Bairstow"
   },
   {
     "code": "barowl5",
@@ -26648,14 +26576,6 @@
     "author": "Christoph Moning"
   },
   {
-    "code": "yebbar1",
-    "name": "Western Yellow-billed Barbet",
-    "sciName": "Trachylaemus goffinii",
-    "license": "cc-by-nc",
-    "key": "116436891",
-    "author": "Nik Borrow"
-  },
-  {
     "code": "yebbar5",
     "name": "Eastern Yellow-billed Barbet",
     "sciName": "Trachylaemus purpuratus",
@@ -26820,8 +26740,8 @@
     "name": "Northern Red-fronted Tinkerbird",
     "sciName": "Pogoniulus uropygialis",
     "license": "CC BY-NC 3.0",
-    "key": "294304365",
-    "author": "andrewhodgson"
+    "key": "257873758",
+    "author": "Alex R"
   },
   {
     "code": "reftin4",
@@ -27947,9 +27867,9 @@
     "code": "ochpic1",
     "name": "Ochraceous Piculet",
     "sciName": "Picumnus limae",
-    "license": "null 4.0",
-    "key": "251800274",
-    "author": "Alenilson"
+    "license": "CC BY-NC 4.0",
+    "key": "105180067",
+    "author": "eduardovieira17"
   },
   {
     "code": "motpic1",
@@ -32976,14 +32896,6 @@
     "author": "Robin Gwen Agarwal"
   },
   {
-    "code": "pappit2",
-    "name": "North Papuan Pitta",
-    "sciName": "Erythropitta habenichti",
-    "license": "cc-by-nc",
-    "key": "313625619",
-    "author": "Mehd Halaouate"
-  },
-  {
     "code": "rempar",
     "name": "Red-masked Parakeet",
     "sciName": "Psittacara erythrogenys",
@@ -36256,14 +36168,6 @@
     "author": "er-birds"
   },
   {
-    "code": "lotwoo1",
-    "name": "Long-tailed Woodcreeper",
-    "sciName": "Deconychura longicauda",
-    "license": "CC BY-NC 4.0",
-    "key": "426792826",
-    "author": "NINA WENÓLI"
-  },
-  {
     "code": "rubant1",
     "name": "Rufous-breasted Antthrush",
     "sciName": "Formicarius rufipectus",
@@ -36718,14 +36622,6 @@
     "license": "CC BY-NC 2.0",
     "key": "335325866",
     "author": "Eduardo Franco"
-  },
-  {
-    "code": "plaxen1",
-    "name": "Plain Xenops",
-    "sciName": "Xenops minutus",
-    "license": "CC BY-NC 2.0",
-    "key": "176974820",
-    "author": "Luciano Bernardes"
   },
   {
     "code": "ivbwoo1",
@@ -37931,9 +37827,9 @@
     "code": "cipcan1",
     "name": "Cipo Canastero",
     "sciName": "Asthenes luizae",
-    "license": "null 3.0",
-    "key": "42125750",
-    "author": "Eden Fontes"
+    "license": "CC BY-NC 3.0",
+    "key": "340982054",
+    "author": "Claudio Martins de Souza"
   },
   {
     "code": "hudcan1",
@@ -38371,9 +38267,9 @@
     "code": "caacac1",
     "name": "Caatinga Cacholote",
     "sciName": "Pseudoseisura cristata",
-    "license": "null 2.0",
-    "key": "252073151",
-    "author": "Alenilson"
+    "license": "CC BY-NC 2.0",
+    "key": "303550467",
+    "author": "damiao-oliveira"
   },
   {
     "code": "rufcac2",
@@ -39540,8 +39436,8 @@
     "name": "Purple-throated Cotinga",
     "sciName": "Porphyrolaema porphyrolaema",
     "license": "CC BY-NC 4.0",
-    "key": "74761230",
-    "author": "Nik Borrow"
+    "key": "188617828",
+    "author": "drmbush"
   },
   {
     "code": "bltcot1",
@@ -39720,14 +39616,6 @@
     "author": "Felipe Kenzo Aoyagui"
   },
   {
-    "code": "shlcot3",
-    "name": "Brazilian Laniisoma",
-    "sciName": "Laniisoma elegans",
-    "license": null,
-    "key": "39210158",
-    "author": "Eden Fontes"
-  },
-  {
     "code": "whnxen1",
     "name": "White-naped Xenopsaris",
     "sciName": "Xenopsaris albinucha",
@@ -39891,9 +39779,9 @@
     "code": "royfly5",
     "name": "Atlantic Royal Flycatcher",
     "sciName": "Onychorhynchus swainsoni",
-    "license": null,
-    "key": "42559733",
-    "author": "Eden Fontes"
+    "license": "cc-by-nc",
+    "key": "262022441",
+    "author": "Anderson Sandro"
   },
   {
     "code": "rutfly2",
@@ -39923,9 +39811,9 @@
     "code": "whifly1",
     "name": "Whiskered Flycatcher",
     "sciName": "Myiobius barbatus",
-    "license": null,
-    "key": "105057034",
-    "author": "Eden Fontes"
+    "license": "cc-by",
+    "key": "418736981",
+    "author": "Thomaz de Carvalho Callado"
   },
   {
     "code": "bltfly1",
@@ -39955,9 +39843,9 @@
     "code": "bkcpip1",
     "name": "Black-capped Piprites",
     "sciName": "Piprites pileata",
-    "license": "null 3.0",
-    "key": "41569100",
-    "author": "Eden Fontes"
+    "license": "CC BY-NC 3.0",
+    "key": "66272008",
+    "author": "Hudson Martins Soares"
   },
   {
     "code": "cinmat1",
@@ -40179,9 +40067,9 @@
     "code": "oustyr1",
     "name": "Oustalet's Tyrannulet",
     "sciName": "Phylloscartes oustaleti",
-    "license": "null 3.0",
-    "key": "42559786",
-    "author": "Eden Fontes"
+    "license": "CC BY-NC 3.0",
+    "key": "367242392",
+    "author": "Luiz Alberto Santos"
   },
   {
     "code": "yegtyr1",
@@ -40435,9 +40323,9 @@
     "code": "drbpyt1",
     "name": "Drab-breasted Pygmy-Tyrant",
     "sciName": "Hemitriccus diops",
-    "license": "null 4.0",
-    "key": "63679139",
-    "author": "Eden Fontes"
+    "license": "CC BY-NC 4.0",
+    "key": "381165658",
+    "author": "Renato dos Santos"
   },
   {
     "code": "bnbpyt1",
@@ -40774,22 +40662,6 @@
     "license": "CC BY-SA 2.0",
     "key": "bbbIAHqRyB02F011",
     "author": "Dario Sanches"
-  },
-  {
-    "code": "moctyr7",
-    "name": "Northern Mouse-colored Tyrannulet",
-    "sciName": "Nesotriccus incomtus",
-    "license": "cc-by-nc",
-    "key": "222620415",
-    "author": "Bioexploradores Farallones"
-  },
-  {
-    "code": "moctyr3",
-    "name": "Southern Mouse-colored Tyrannulet",
-    "sciName": "Nesotriccus murinus",
-    "license": "CC BY-NC 2.0",
-    "key": "32949770",
-    "author": "shrike2"
   },
   {
     "code": "orefly1",
@@ -41395,9 +41267,9 @@
     "code": "sootyr1",
     "name": "Sooty Tyrannulet",
     "sciName": "Serpophaga nigricans",
-    "license": "null 2.0",
-    "key": "45476462",
-    "author": "Eden Fontes"
+    "license": "CC BY-NC 2.0",
+    "key": "409459430",
+    "author": "joseluisblazquez"
   },
   {
     "code": "y01036",
@@ -42220,8 +42092,8 @@
     "name": "Jelski's Black-Tyrant",
     "sciName": "Knipolegus signatus",
     "license": "cc-by-nc",
-    "key": "77207151",
-    "author": "Edgar Romeo"
+    "key": "101976540",
+    "author": "Christian Nunes"
   },
   {
     "code": "andtyr2",
@@ -43256,14 +43128,6 @@
     "author": "Anderson Sandro"
   },
   {
-    "code": "rufgra1",
-    "name": "Rufous Grasswren",
-    "sciName": "Amytornis whitei",
-    "license": "cc-by-nc",
-    "key": "235680294",
-    "author": "Indra Bone"
-  },
-  {
     "code": "sntkin1",
     "name": "Snowy-throated Kingbird",
     "sciName": "Tyrannus niveigularis",
@@ -44048,14 +43912,6 @@
     "author": "Snow Dennis"
   },
   {
-    "code": "dusmyz1",
-    "name": "Dusky Myzomela",
-    "sciName": "Myzomela obscura",
-    "license": "CC BY-NC 3.0",
-    "key": "175078612",
-    "author": "garywwilson"
-  },
-  {
     "code": "belmin1",
     "name": "Bell Miner",
     "sciName": "Manorina melanophrys",
@@ -44078,14 +43934,6 @@
     "license": "CC BY-SA 4.0",
     "key": "AJ1ghSjPi4RiPRzf",
     "author": "Andreas Trepte"
-  },
-  {
-    "code": "redmyz1",
-    "name": "Red Myzomela",
-    "sciName": "Myzomela cruentata",
-    "license": "cc-by-nc",
-    "key": "178190368",
-    "author": "Mehd Halaouate"
   },
   {
     "code": "blemin1",
@@ -45696,14 +45544,6 @@
     "author": "t-weichselbaum"
   },
   {
-    "code": "larcus1",
-    "name": "Large Cuckooshrike",
-    "sciName": "Coracina macei",
-    "license": "CC BY-NC 2.0",
-    "key": "102480720",
-    "author": "KANS"
-  },
-  {
     "code": "fiemin1",
     "name": "Fiery Minivet",
     "sciName": "Pericrocotus igneus",
@@ -45750,14 +45590,6 @@
     "license": "CC BY-NC 2.0",
     "key": "410084763",
     "author": "Carolyn Stewart"
-  },
-  {
-    "code": "javcus1",
-    "name": "Javan Cuckooshrike",
-    "sciName": "Coracina javensis",
-    "license": "CC BY-NC-SA 2.0",
-    "key": "588353",
-    "author": "Vijay Anand Ismavel"
   },
   {
     "code": "scamin3",
@@ -45940,8 +45772,8 @@
     "name": "Bar-bellied Cuckooshrike",
     "sciName": "Coracina striata",
     "license": "CC BY-NC 2.0",
-    "key": "316279259",
-    "author": "Forest Botial-Jarvis"
+    "key": "313299533",
+    "author": "Dixon Lau"
   },
   {
     "code": "babcuc19",
@@ -46944,14 +46776,6 @@
     "author": "Rhododendrites"
   },
   {
-    "code": "temwhi1",
-    "name": "Temotu Whistler",
-    "sciName": "Pachycephala vanikorensis",
-    "license": "cc-by-nc",
-    "key": "229364866",
-    "author": "Bird Explorers"
-  },
-  {
     "code": "chivir1",
     "name": "Chivi Vireo",
     "sciName": "Vireo chivi",
@@ -46990,22 +46814,6 @@
     "license": "CC BY-NC 2.0",
     "key": "187321826",
     "author": "Martha B. González González"
-  },
-  {
-    "code": "golwhi1",
-    "name": "Golden Whistler",
-    "sciName": "Pachycephala pectoralis",
-    "license": "CC0 2.0",
-    "key": "339540312",
-    "author": "Adam Jackson"
-  },
-  {
-    "code": "weswhi2",
-    "name": "Western Whistler",
-    "sciName": "Pachycephala fuliginosa",
-    "license": "cc-by-nc",
-    "key": "321989627",
-    "author": "wacrakey"
   },
   {
     "code": "sansht2",
@@ -47219,9 +47027,9 @@
     "code": "yetwhi1",
     "name": "Moluccan Whistler",
     "sciName": "Pachycephala macrorhyncha",
-    "license": "cc0",
-    "key": "337788159",
-    "author": "James Eaton"
+    "license": "cc-by-nc",
+    "key": "119646769",
+    "author": "Benoît Segerer"
   },
   {
     "code": "yetwhi6",
@@ -47270,14 +47078,6 @@
     "license": "cc-by-nc",
     "key": "108016695",
     "author": "Nik Borrow"
-  },
-  {
-    "code": "lorwhi1",
-    "name": "Lorentz's Whistler",
-    "sciName": "Pachycephala lorentzi",
-    "license": "cc-by-nc",
-    "key": "311498675",
-    "author": "setaphong"
   },
   {
     "code": "yebwhi1",
@@ -48576,14 +48376,6 @@
     "author": "Ad Konings"
   },
   {
-    "code": "zanbou1",
-    "name": "Zanzibar Boubou",
-    "sciName": "Laniarius sublacteus",
-    "license": null,
-    "key": "174946882",
-    "author": "dbeadle"
-  },
-  {
     "code": "gabbou1",
     "name": "Gabon Boubou",
     "sciName": "Laniarius bicolor",
@@ -49784,22 +49576,6 @@
     "author": "Heinrich Human"
   },
   {
-    "code": "bawmon1",
-    "name": "Black-and-white Monarch",
-    "sciName": "Symposiachrus barbatus",
-    "license": "cc0",
-    "key": "e5iLctF1n4UtUtbC",
-    "author": "William Matthew Hart"
-  },
-  {
-    "code": "kulmon1",
-    "name": "Kolombangara Monarch",
-    "sciName": "Symposiachrus browni",
-    "license": "cc0",
-    "key": "RcOL1zc5F38astj5",
-    "author": "William Matthew Hart"
-  },
-  {
     "code": "bhpfly1",
     "name": "Black-headed Paradise-Flycatcher",
     "sciName": "Terpsiphone rufiventer",
@@ -50278,14 +50054,6 @@
     "license": "CC BY-SA 2.0",
     "key": "dws2gRGJIzzk0OOb",
     "author": "Greg Miles"
-  },
-  {
-    "code": "blamag1",
-    "name": "Black Magpie",
-    "sciName": "Platysmurus leucopterus",
-    "license": "CC BY-NC 2.0",
-    "key": "328845217",
-    "author": "Dixon Lau"
   },
   {
     "code": "whwcho1",
@@ -50888,14 +50656,6 @@
     "author": "Adam Jackson"
   },
   {
-    "code": "eurnut1",
-    "name": "Eurasian Nutcracker",
-    "sciName": "Nucifraga caryocatactes",
-    "license": "CC BY-SA 4.0",
-    "key": "uHVcW4O6M2aHRrGg",
-    "author": "Alpsdake"
-  },
-  {
     "code": "mexjay4",
     "name": "Mexican Jay",
     "sciName": "Aphelocoma wollweberi",
@@ -50926,14 +50686,6 @@
     "license": "CC BY-SA 3.0",
     "key": "AEfEn6YO1xrlD35y",
     "author": "Luc Viatour"
-  },
-  {
-    "code": "slbcro1",
-    "name": "Slender-billed Crow",
-    "sciName": "Corvus enca",
-    "license": "CC BY-NC 3.0",
-    "key": "336576015",
-    "author": "Dixon Lau"
   },
   {
     "code": "blhjay1",
@@ -52344,14 +52096,6 @@
     "author": "Steve Riall"
   },
   {
-    "code": "gretit2",
-    "name": "Cinereous Tit",
-    "sciName": "Parus cinereus",
-    "license": "CC BY-NC 4.0",
-    "key": "62409690",
-    "author": "fatimaliu"
-  },
-  {
     "code": "pedtit1",
     "name": "Pere David's Tit",
     "sciName": "Poecile davidi",
@@ -52382,14 +52126,6 @@
     "license": "cc-by-nc",
     "key": "439316981",
     "author": "冰鸟"
-  },
-  {
-    "code": "gretit4",
-    "name": "Japanese Tit",
-    "sciName": "Parus minor",
-    "license": "CC BY-SA 3.0",
-    "key": "daevImXPO7KKOEKV",
-    "author": "Alpsdake"
   },
   {
     "code": "wiltit1",
@@ -53766,14 +53502,6 @@
     "license": "CC BY-NC 4.0",
     "key": "233132854",
     "author": "ianrijsdijk"
-  },
-  {
-    "code": "karapa1",
-    "name": "Karamoja Apalis",
-    "sciName": "Apalis karamojae",
-    "license": "cc-by-nc",
-    "key": "399031705",
-    "author": "keithw1"
   },
   {
     "code": "rucere1",
@@ -55744,14 +55472,6 @@
     "author": "James Steamer"
   },
   {
-    "code": "rocmar2",
-    "name": "Rock Martin",
-    "sciName": "Ptyonoprogne fuligula",
-    "license": "CC BY-SA 2.0",
-    "key": "8f2AvHZRa9BZaUiV",
-    "author": "Bernard DUPONT"
-  },
-  {
     "code": "whtoxy1",
     "name": "White-throated Oxylabes",
     "sciName": "Oxylabes madagascariensis",
@@ -55960,14 +55680,6 @@
     "author": "ken_simonite"
   },
   {
-    "code": "rerswa1",
-    "name": "Red-rumped Swallow",
-    "sciName": "Cecropis daurica",
-    "license": "CC BY-SA 4.0",
-    "key": "QZ7ivB5G27uN7noy",
-    "author": "Shantanu Kuveskar"
-  },
-  {
     "code": "plamar3",
     "name": "Madagascar Martin",
     "sciName": "Riparia cowani",
@@ -55998,14 +55710,6 @@
     "license": "CC BY-NC 2.0",
     "key": "375211844",
     "author": "pierpaolo_pessano"
-  },
-  {
-    "code": "strswa2",
-    "name": "Striated Swallow",
-    "sciName": "Cecropis striolata",
-    "license": "CC BY-NC 2.0",
-    "key": "403999799",
-    "author": "shajanshaki"
   },
   {
     "code": "pasmar1",
@@ -56208,14 +55912,6 @@
     "author": "valeria vieira"
   },
   {
-    "code": "lesbri2",
-    "name": "Lesser Bristlebill",
-    "sciName": "Bleda notatus",
-    "license": "cc-by-nc",
-    "key": "335661374",
-    "author": "markusgmeiner"
-  },
-  {
     "code": "blcswa2",
     "name": "Black-collared Swallow",
     "sciName": "Pygochelidon melanoleuca",
@@ -56246,14 +55942,6 @@
     "license": "CC BY-NC-SA 2.0",
     "key": "303987036",
     "author": "Edison Díaz"
-  },
-  {
-    "code": "yetgre1",
-    "name": "Yellow-throated Greenbul",
-    "sciName": "Atimastillas flavicollis",
-    "license": "CC BY-SA 4.0",
-    "key": "8L7mwX3YYng05e66",
-    "author": "Charles J. Sharp"
   },
   {
     "code": "andswa2",
@@ -56320,14 +56008,6 @@
     "author": "Duncan McKenzie"
   },
   {
-    "code": "easmog1",
-    "name": "Eastern Mountain Greenbul",
-    "sciName": "Arizelocichla nigriceps",
-    "license": "CC BY-NC 2.0",
-    "key": "238898441",
-    "author": "Jeffrey H. Skevington"
-  },
-  {
     "code": "pebswa1",
     "name": "Pearl-breasted Swallow",
     "sciName": "Hirundo dimidiata",
@@ -56348,8 +56028,8 @@
     "name": "Pacific Swallow",
     "sciName": "Hirundo javanica",
     "license": "CC BY-NC 3.0",
-    "key": "13385376",
-    "author": "Scott Bowers"
+    "key": "440803080",
+    "author": "greenshank"
   },
   {
     "code": "pacswa5",
@@ -56454,14 +56134,6 @@
     "license": "cc-by-nc",
     "key": "60704687",
     "author": "Никифорова Валерия"
-  },
-  {
-    "code": "whtgre2",
-    "name": "White-throated Greenbul",
-    "sciName": "Phyllastrephus albigularis",
-    "license": "cc-by",
-    "key": "303856260",
-    "author": "Tommy Andriollo"
   },
   {
     "code": "ashmar1",
@@ -59872,14 +59544,6 @@
     "author": "Steve Murray"
   },
   {
-    "code": "rufbab2",
-    "name": "Rufous-fronted Babbler",
-    "sciName": "Cyanoderma rufifrons",
-    "license": "cc-by-nc",
-    "key": "176747676",
-    "author": "Gaurab Talukdar"
-  },
-  {
     "code": "silver3",
     "name": "Silvereye",
     "sciName": "Zosterops lateralis",
@@ -62592,14 +62256,6 @@
     "author": "Adam Jackson"
   },
   {
-    "code": "runwre1",
-    "name": "Rufous-naped Wren",
-    "sciName": "Campylorhynchus rufinucha",
-    "license": "CC BY-SA 3.0",
-    "key": "ScSIrJwX0SuYBTeI",
-    "author": "Joseph C Boone"
-  },
-  {
     "code": "houwre3",
     "name": "Cozumel Wren",
     "sciName": "Troglodytes beani",
@@ -63454,14 +63110,6 @@
     "license": "cc-by-nc",
     "key": "433676164",
     "author": "jsterling60"
-  },
-  {
-    "code": "whbthr1",
-    "name": "White-breasted Thrasher",
-    "sciName": "Ramphocinclus brachyurus",
-    "license": "cc-by-nc",
-    "key": "257328640",
-    "author": "Plana Baptiste"
   },
   {
     "code": "apomyn2",
@@ -65128,14 +64776,6 @@
     "author": "John Gale"
   },
   {
-    "code": "islthr1",
-    "name": "Island Thrush",
-    "sciName": "Turdus poliocephalus",
-    "license": "CC BY-SA 2.0",
-    "key": "fObCPiJegSg3VZqP",
-    "author": "markaharper1"
-  },
-  {
     "code": "redwin",
     "name": "Redwing",
     "sciName": "Turdus iliacus",
@@ -65776,14 +65416,6 @@
     "author": "peterchristiaen"
   },
   {
-    "code": "whrsha2",
-    "name": "White-crowned Shama",
-    "sciName": "Copsychus stricklandii",
-    "license": "cc-by-nc",
-    "key": "289851635",
-    "author": "Forest Botial-Jarvis"
-  },
-  {
     "code": "asbfly1",
     "name": "Ashy-breasted Flycatcher",
     "sciName": "Muscicapa randi",
@@ -66104,14 +65736,6 @@
     "author": "thierry_aebischer_chinko"
   },
   {
-    "code": "chtjuf1",
-    "name": "Chestnut-tailed Jungle Flycatcher",
-    "sciName": "Cyornis ruficauda",
-    "license": "cc-by-nc",
-    "key": "387243523",
-    "author": "Александра Ивушкина"
-  },
-  {
     "code": "brsrob1",
     "name": "Brown Scrub-Robin",
     "sciName": "Tychaedon signata",
@@ -66236,8 +65860,8 @@
     "name": "Sri Lankan Shama",
     "sciName": "Copsychus leggei",
     "license": "cc-by-nc",
-    "key": "453861865",
-    "author": "John Eppler"
+    "key": "442893348",
+    "author": "昆虫学liuye"
   },
   {
     "code": "whrsha16",
@@ -66768,14 +66392,6 @@
     "author": "Paul Cools"
   },
   {
-    "code": "sunrob1",
-    "name": "Sunda Robin",
-    "sciName": "Myiomela diana",
-    "license": "CC BY-NC 2.0",
-    "key": "313035324",
-    "author": "Forest Botial-Jarvis"
-  },
-  {
     "code": "anccha1",
     "name": "Angola Cave-Chat",
     "sciName": "Xenocopsychus ansorgei",
@@ -66806,14 +66422,6 @@
     "license": "CC BY-NC 2.0",
     "key": "179799089",
     "author": "Alex R"
-  },
-  {
-    "code": "refblu",
-    "name": "Red-flanked Bluetail",
-    "sciName": "Tarsiger cyanurus",
-    "license": "CC BY-NC 3.0",
-    "key": "244039552",
-    "author": "ansonw38"
   },
   {
     "code": "eurrob1",
@@ -68320,14 +67928,6 @@
     "author": "Dûrzan cîrano"
   },
   {
-    "code": "blbflo1",
-    "name": "Blood-breasted Flowerpecker",
-    "sciName": "Dicaeum sanguinolentum",
-    "license": "CC BY-NC 2.0",
-    "key": "247315139",
-    "author": "achmadjaelani"
-  },
-  {
     "code": "mouwhe2",
     "name": "Mourning Wheatear",
     "sciName": "Oenanthe lugens",
@@ -68502,14 +68102,6 @@
     "license": "CC BY-SA 3.0",
     "key": "QT7Rp0ny0FlzV33b",
     "author": "JJ Harrison"
-  },
-  {
-    "code": "gresun1",
-    "name": "Green Sunbird",
-    "sciName": "Anthreptes rectirostris",
-    "license": "cc-by-nc",
-    "key": "93977612",
-    "author": "Nik Borrow"
   },
   {
     "code": "yevflo1",
@@ -70667,7 +70259,7 @@
     "code": "usawea1",
     "name": "Usambara Weaver",
     "sciName": "Ploceus nicolli",
-    "license": null,
+    "license": "cc-by-nc",
     "key": "173080330",
     "author": "dbeadle"
   },
@@ -73760,14 +73352,6 @@
     "author": "Алексей Эбель"
   },
   {
-    "code": "reisee1",
-    "name": "Reichard's Seedeater",
-    "sciName": "Crithagra reichardi",
-    "license": "CC BY-NC 2.0",
-    "key": "396861108",
-    "author": "Nik Borrow"
-  },
-  {
     "code": "thbros1",
     "name": "Three-banded Rosefinch",
     "sciName": "Carpodacus trifasciatus",
@@ -73808,14 +73392,6 @@
     "author": "Ben Tsai蔡維哲"
   },
   {
-    "code": "comred",
-    "name": "Common Redpoll",
-    "sciName": "Acanthis flammea",
-    "license": "CC BY-NC 3.0",
-    "key": "107180210",
-    "author": "Weston Barker"
-  },
-  {
     "code": "whcbul1",
     "name": "White-cheeked Bullfinch",
     "sciName": "Pyrrhula leucogenis",
@@ -73832,14 +73408,6 @@
     "author": "tahir"
   },
   {
-    "code": "lesred1",
-    "name": "Lesser Redpoll",
-    "sciName": "Acanthis cabaret",
-    "license": "CC BY 2.0",
-    "key": "s9L0HQGary4KYbEO",
-    "author": "Carduelis_cabaret.jpg: Lawrie Phipps\nderivative work: MPF (talk)"
-  },
-  {
     "code": "rehbul1",
     "name": "Red-headed Bullfinch",
     "sciName": "Pyrrhula erythrocephala",
@@ -73854,14 +73422,6 @@
     "license": "cc-by-nc",
     "key": "410613013",
     "author": "冰鸟"
-  },
-  {
-    "code": "hoared",
-    "name": "Hoary Redpoll",
-    "sciName": "Acanthis hornemanni",
-    "license": "CC BY 2.0",
-    "key": "uVNnZta8RPkO7pX7",
-    "author": "Ron Knight"
   },
   {
     "code": "gyhbul5",
@@ -73974,14 +73534,6 @@
     "license": "CC0 3.0",
     "key": "339623740",
     "author": "Adam Jackson"
-  },
-  {
-    "code": "mouser1",
-    "name": "Mountain Serin",
-    "sciName": "Chrysocorythus estherae",
-    "license": "cc-by-nc",
-    "key": "336281411",
-    "author": "khalebyordan"
   },
   {
     "code": "bkrfin",
@@ -75016,14 +74568,6 @@
     "author": "Евгения"
   },
   {
-    "code": "blcspa2",
-    "name": "Black-capped Sparrow",
-    "sciName": "Arremon abeillei",
-    "license": "CC BY-NC 2.0",
-    "key": "64718121",
-    "author": "Mickaël Villemagne"
-  },
-  {
     "code": "yebbun",
     "name": "Yellow-breasted Bunting",
     "sciName": "Emberiza aureola",
@@ -75678,22 +75222,6 @@
     "license": "CC BY-NC 3.0",
     "key": "57774056",
     "author": "Mike Hannisian"
-  },
-  {
-    "code": "trbfin1",
-    "name": "Tricolored Brushfinch",
-    "sciName": "Atlapetes tricolor",
-    "license": "CC BY-NC 2.0",
-    "key": "364268581",
-    "author": "Oscar Wainwright"
-  },
-  {
-    "code": "slbfin2",
-    "name": "Slaty Brushfinch",
-    "sciName": "Atlapetes schistaceus",
-    "license": "CC BY 2.0",
-    "key": "246471007",
-    "author": "Abby Darrah"
   },
   {
     "code": "nstspa",
@@ -79228,8 +78756,8 @@
     "name": "Burnished-buff Tanager",
     "sciName": "Stilpnia cayana",
     "license": "CC BY-NC 2.0",
-    "key": "172523377",
-    "author": "Eden Fontes"
+    "key": "440468459",
+    "author": "Augusto Alves"
   },
   {
     "code": "leatan1",

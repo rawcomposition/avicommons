@@ -16,8 +16,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     await connect();
 
     const sourceKey = data.source === "inat" ? data.sourceId : generateHash(data.sourceId);
+    console.log("SOURCE KEY:", sourceKey);
 
-    await Species.updateOne({ _id: code }, { $set: { ...data, sourceKey, hasImg: true }, $unset: { downloadedAt: 1 } });
+    await Species.updateOne({ _id: code }, { $set: { ...data, sourceKey }, $unset: { downloadedAt: 1 } });
 
     res.status(200).json({ success: true });
   } catch (error: any) {

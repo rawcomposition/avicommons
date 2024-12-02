@@ -1,30 +1,30 @@
 {
-  "total": 11209,
-  "withImg": 10149,
+  "total": 11145,
+  "withImg": 10090,
   "percent": "90.5%",
   "license": [
     {
       "id": "cc-by-nc",
       "label": "CC BY-NC",
-      "count": 7380,
-      "percent": "65.8%"
+      "count": 7353,
+      "percent": "66.0%"
     },
     {
       "id": "cc-by-sa",
       "label": "CC BY-SA",
-      "count": 875,
+      "count": 868,
       "percent": "7.8%"
     },
     {
       "id": "cc0",
       "label": "CC0",
-      "count": 805,
+      "count": 801,
       "percent": "7.2%"
     },
     {
       "id": "cc-by",
       "label": "CC BY",
-      "count": 927,
+      "count": 922,
       "percent": "8.3%"
     },
     {
@@ -36,14 +36,8 @@
     {
       "id": "cc-by-nc-sa",
       "label": "CC BY-NC-SA",
-      "count": 141,
+      "count": 140,
       "percent": "1.3%"
-    },
-    {
-      "id": null,
-      "label": null,
-      "count": 15,
-      "percent": "0.1%"
     },
     {
       "id": "",
@@ -68,14 +62,14 @@
     {
       "id": "inat",
       "label": "iNaturalist",
-      "count": 9070,
-      "percent": "80.9%"
+      "count": 9023,
+      "percent": "81.0%"
     },
     {
       "id": "wikipedia",
       "label": "Wikipedia",
-      "count": 1031,
-      "percent": "9.2%"
+      "count": 1019,
+      "percent": "9.1%"
     },
     {
       "id": "flickr",
@@ -85,7 +79,6 @@
     }
   ],
   "taxonVersions": [
-    "2023",
     "2024"
   ]
 }
