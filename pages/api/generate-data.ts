@@ -101,14 +101,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       by: it.author,
     }));
 
-  const dataLite = data.map((it) => ({
-    code: it.code,
-    key: it.key,
-    by: it.by,
-  }));
+  const dataLite = data.reduce<Record<string, string[]>>((acc, it) => {
+    acc[it.code] = [it.key, it.by];
+    return acc;
+  }, {});
 
-  fs.writeFileSync(path.join(process.cwd(), "public", "latest.json"), JSON.stringify(data, null, 2));
-  fs.writeFileSync(path.join(process.cwd(), "public", "latest-lite.json"), JSON.stringify(dataLite, null, 2));
+  fs.writeFileSync(path.join(process.cwd(), "public", "latest.json"), JSON.stringify(data));
+  fs.writeFileSync(path.join(process.cwd(), "public", "latest-lite.json"), JSON.stringify(dataLite));
 
   const recentlyDownloadedFormatted = recentlyDownloaded.map((it) => ({
     code: it._id,
