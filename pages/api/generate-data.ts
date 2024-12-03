@@ -98,13 +98,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       sciName: it.sciName,
       license: it.licenseVer ? `${LicenseLabel[it.license] || it.license} ${it.licenseVer}` : it.license,
       key: it.sourceKey,
-      author: it.author,
+      by: it.author,
     }));
 
   const dataLite = data.map((it) => ({
     code: it.code,
     key: it.key,
-    author: it.author,
+    by: it.by,
   }));
 
   fs.writeFileSync(path.join(process.cwd(), "public", "latest.json"), JSON.stringify(data, null, 2));
