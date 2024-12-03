@@ -62,7 +62,7 @@ export default function Import({ data, code }: Props) {
   const sourceUrl = sourceId ? getSourceUrl(source, sourceId, iNatObsId) : null;
 
   const { data: sourceInfo, isLoading: isSourceInfoLoading } = useQuery<{ info: SourceInfoT }>({
-    queryKey: ["/api/species/get-source-info", { source, sourceId, iNatObsId }],
+    queryKey: ["/api/get-source-info", { source, sourceId, iNatObsId }],
     enabled: !!source && (!!sourceId || !!iNatObsId),
     retry: false,
   });
@@ -104,12 +104,12 @@ export default function Import({ data, code }: Props) {
   }, [source]);
 
   const mutation = useMutation({
-    url: `/api/species/${code}/update`,
+    url: `/api/${code}/update`,
     method: "POST",
   });
 
   const removeMutation = useMutation({
-    url: `/api/species/${code}/reset`,
+    url: `/api/${code}/reset`,
     method: "DELETE",
     onSuccess: () => {
       router.reload();

@@ -107,8 +107,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     author: it.author,
   }));
 
-  fs.writeFileSync(path.join(process.cwd(), "data", "data.json"), JSON.stringify(data, null, 2));
-  fs.writeFileSync(path.join(process.cwd(), "data", "data-lite.json"), JSON.stringify(dataLite, null, 2));
+  fs.writeFileSync(path.join(process.cwd(), "public", "latest.json"), JSON.stringify(data, null, 2));
+  fs.writeFileSync(path.join(process.cwd(), "public", "latest-lite.json"), JSON.stringify(dataLite, null, 2));
 
   const recentlyDownloadedFormatted = recentlyDownloaded.map((it) => ({
     code: it._id,
