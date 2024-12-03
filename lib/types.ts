@@ -61,6 +61,7 @@ export type SpeciesT = {
   familyCode: string;
   taxonVersions: string[];
   flip: boolean;
+  isUploaded: boolean;
 };
 
 export type SpeciesInput = {

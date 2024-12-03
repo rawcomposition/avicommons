@@ -17,6 +17,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       {
         $unset: {
           downloadedAt: 1,
+          isUploaded: 1,
           hasImg: 1,
           author: 1,
           crop: 1,

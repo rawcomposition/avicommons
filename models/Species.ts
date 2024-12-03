@@ -50,6 +50,7 @@ const SpeciesSchema = new Schema({
   familyCode: String,
   taxonVersions: [String],
   flip: Boolean,
+  isUploaded: Boolean,
 });
 
 const Species = models.Species || model("Species", SpeciesSchema);

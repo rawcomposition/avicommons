@@ -4,6 +4,7 @@ import Species from "models/Species";
 import { IMG_SIZES } from "lib/species";
 import sharp from "sharp";
 import path from "path";
+import { promises as fs } from "fs";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
   if (process.env.NODE_ENV !== "development") {
@@ -18,7 +19,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
   for (const { sourceKey, crop, _id, flip } of species) {
     const filename = `${_id}-${sourceKey}`;
-    const fs = require("fs").promises;
     const originalPath = path.join(process.cwd(), "originals", `${filename}.jpg`);
 
     let buffer: Buffer;

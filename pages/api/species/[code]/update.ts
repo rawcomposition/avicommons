@@ -25,7 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
     const unset = current.sourceId !== data.sourceId ? { downloadedAt: 1 } : {};
 
-    await Species.updateOne({ _id: code }, { $set: { ...data, sourceKey }, $unset: unset });
+    await Species.updateOne({ _id: code }, { $set: { ...data, sourceKey, isUploaded: false }, $unset: unset });
 
     res.status(200).json({ success: true });
   } catch (error: any) {
