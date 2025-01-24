@@ -5,7 +5,8 @@
     "sciName": "Bubo cinerascens",
     "license": "cc-by-nc",
     "key": "6162037",
-    "author": "Nik Borrow"
+    "author": "Nik Borrow",
+    "downloadedAt": "2024-12-02T19:42:30.165Z"
   },
   {
     "code": "bubtan2",
@@ -13,7 +14,8 @@
     "sciName": "Stilpnia cayana",
     "license": "CC BY-NC 2.0",
     "key": "440468459",
-    "author": "Augusto Alves"
+    "author": "Augusto Alves",
+    "downloadedAt": "2024-12-02T18:34:14.296Z"
   },
   {
     "code": "whrsha5",
@@ -21,7 +23,8 @@
     "sciName": "Copsychus leggei",
     "license": "cc-by-nc",
     "key": "442893348",
-    "author": "昆虫学liuye"
+    "author": "昆虫学liuye",
+    "downloadedAt": "2024-12-02T18:34:14.181Z"
   },
   {
     "code": "pacswa1",
@@ -29,7 +32,8 @@
     "sciName": "Hirundo javanica",
     "license": "CC BY-NC 3.0",
     "key": "440803080",
-    "author": "greenshank"
+    "author": "greenshank",
+    "downloadedAt": "2024-12-02T18:34:14.066Z"
   },
   {
     "code": "yetwhi1",
@@ -37,7 +41,8 @@
     "sciName": "Pachycephala macrorhyncha",
     "license": "cc-by-nc",
     "key": "119646769",
-    "author": "Benoît Segerer"
+    "author": "Benoît Segerer",
+    "downloadedAt": "2024-12-02T18:34:13.961Z"
   },
   {
     "code": "babcus1",
@@ -45,7 +50,8 @@
     "sciName": "Coracina striata",
     "license": "CC BY-NC 2.0",
     "key": "313299533",
-    "author": "Dixon Lau"
+    "author": "Dixon Lau",
+    "downloadedAt": "2024-12-02T18:34:13.848Z"
   },
   {
     "code": "andtyr3",
@@ -53,7 +59,8 @@
     "sciName": "Knipolegus signatus",
     "license": "cc-by-nc",
     "key": "101976540",
-    "author": "Christian Nunes"
+    "author": "Christian Nunes",
+    "downloadedAt": "2024-12-02T18:34:13.738Z"
   },
   {
     "code": "sootyr1",
@@ -61,6 +68,7 @@
     "sciName": "Serpophaga nigricans",
     "license": "CC BY-NC 2.0",
     "key": "409459430",
-    "author": "joseluisblazquez"
+    "author": "joseluisblazquez",
+    "downloadedAt": "2024-12-02T18:34:13.609Z"
   }
 ]

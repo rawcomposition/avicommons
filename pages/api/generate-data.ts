@@ -26,6 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       "name",
       "sciName",
       "downloadedAt",
+      "familyCode",
     ])
       .sort({ order: 1 })
       .lean(),
@@ -37,6 +38,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       "license",
       "licenseVer",
       "author",
+      "downloadedAt",
     ])
       .sort({ downloadedAt: -1 })
       .limit(8)
@@ -99,6 +101,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       license: it.licenseVer ? `${LicenseLabel[it.license] || it.license} ${it.licenseVer}` : it.license,
       key: it.sourceKey,
       by: it.author,
+      family: it.familyCode,
     }));
 
   const dataLite = data.reduce<Record<string, string[]>>((acc, it) => {
@@ -116,6 +119,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     license: it.licenseVer ? `${LicenseLabel[it.license] || it.license} ${it.licenseVer}` : it.license,
     key: it.sourceKey,
     author: it.author,
+    downloadedAt: it.downloadedAt,
   }));
 
   fs.writeFileSync(

@@ -1,11 +1,32 @@
+import React from "react";
 import Stats from "data/stats.json";
 import RecentlyDownloaded from "data/recently-downloaded.json";
 import Link from "next/link";
-import { License, LicenseLabel } from "lib/types";
+import { License, LicenseLabel, OutputPhoto } from "lib/types";
 import { getUrl } from "lib/species";
+import Families from "data/taxon-families.json";
+import SelectBasic from "components/ReactSelectStyled";
+import { useQuery } from "@tanstack/react-query";
+import dayjs from "dayjs";
+
+const PAGE_SIZE = 12;
 
 export default function Landing() {
+  const [family, setFamily] = React.useState<string>("anatid1");
+  const [page, setPage] = React.useState<number>(1);
   const { total, withImg, percent, license, source, taxonVersions } = Stats;
+
+  const { data } = useQuery<{ photos: OutputPhoto[] }>({
+    queryKey: ["/api/photos-by-family", { family }],
+    refetchOnWindowFocus: false,
+  });
+
+  const photos = data?.photos || [];
+  const start = (page - 1) * PAGE_SIZE;
+  const end = start + PAGE_SIZE;
+  const paginatedPhotos = photos.slice(0, end);
+  const hasMore = photos.length > end;
+
   return (
     <div className="min-h-screen bg-gray-50">
       <section className="bg-gray-100 py-10">
@@ -40,15 +61,30 @@ export default function Landing() {
 
       <section className="bg-gray-100 py-10">
         <div className="container mx-auto">
-          <h3 className="text-2xl font-bold text-gray-800 mb-6">Recently Updated Images</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {RecentlyDownloaded.map((item) => (
-              <div key={item.code} className="bg-white rounded shadow overflow-hidden">
-                <img src={getUrl(item.code, item.key, "320")} alt={item.name} className="w-full aspect-[4/3]" />
+          <h3 className="text-2xl font-bold text-gray-800 mb-6">Browse by Family</h3>
+          <SelectBasic
+            options={Families.map((family) => ({ label: `${family.name}`, value: family.code }))}
+            onChange={(selectedOption) => setFamily(selectedOption?.value || Families[0].code)}
+            value={{
+              label: Families.find((it) => it.code === family)?.name,
+              value: family,
+            }}
+            placeholder="Select a family"
+            className="w-[260px] sm:w-[360px]"
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+            {paginatedPhotos.map((item) => (
+              <div key={item.code} className="bg-white rounded shadow overflow-hidden flex">
+                <img
+                  src={getUrl(item.code, item.key, "240")}
+                  alt={item.name}
+                  className="w-[120px] aspect-[4/3]"
+                  loading="lazy"
+                />
                 <div className="p-4">
-                  <h4 className="font-bold text-gray-800 text-lg">{item.name}</h4>
+                  <h4 className="font-bold text-gray-800 text-[16px]">{item.name}</h4>
                   <p className="text-sm text-gray-600 mt-2">
-                    <span className="font-medium">{item.author}</span>{" "}
+                    <span className="font-medium">{item.by}</span>{" "}
                     <span className="bg-gray-200/70 rounded-md px-1.5 py-0.5 text-xs">
                       {LicenseLabel[item.license as License] || item.license}
                     </span>
@@ -56,6 +92,19 @@ export default function Landing() {
                 </div>
               </div>
             ))}
+          </div>
+          <p className="text-gray-500 text-sm mt-2">
+            Showing {paginatedPhotos.length} of {photos.length}
+          </p>
+          <div className="flex justify-center mt-4">
+            {hasMore && (
+              <button
+                className="px-4 py-1 border-2 border-blue-600 text-blue-600 rounded hover:shadow transition font-medium"
+                onClick={() => setPage(page + 1)}
+              >
+                Load More
+              </button>
+            )}
           </div>
         </div>
       </section>
@@ -70,6 +119,31 @@ export default function Landing() {
               <p className="text-gray-600">Percent: {item.percent}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="bg-gray-100 py-10">
+        <div className="container mx-auto">
+          <h3 className="text-2xl font-bold text-gray-800 mb-6">Recently Updated Images</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            {RecentlyDownloaded.map((item) => (
+              <div key={item.code} className="bg-white rounded shadow overflow-hidden">
+                <img src={getUrl(item.code, item.key, "320")} alt={item.name} className="w-full aspect-[4/3]" />
+                <div className="p-4">
+                  <p className="text-[13px] text-gray-600 leading-4 mb-1">
+                    {dayjs(item.downloadedAt).format("MMM DD, YYYY")}
+                  </p>
+                  <h4 className="font-bold text-gray-800 text-lg">{item.name}</h4>
+                  <p className="text-sm text-gray-600 mt-1">
+                    <span className="font-medium">{item.author}</span>{" "}
+                    <span className="bg-gray-200/70 rounded-md px-1.5 py-0.5 text-xs">
+                      {LicenseLabel[item.license as License] || item.license}
+                    </span>
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

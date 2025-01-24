@@ -95,3 +95,13 @@ export type Stats = {
   }[];
   taxonVersions: string[];
 };
+
+export type OutputPhoto = {
+  code: string;
+  name: string;
+  sciName: string;
+  license: string;
+  key: string;
+  by: string;
+  family: string;
+};
