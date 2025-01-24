@@ -12,6 +12,14 @@ Most images are licenced under CC BY-NC (attribution non-commercial), but there'
 
 Most images are licensed under some form of "NC" (non-commercial) license, so using them in paid apps would not be allowed. However, about 15% of the images use the CC0 (public domain) and CC-BY (attribution) licenses. See [License Breakdown](https://github.com/rawcomposition/avicommons/tree/main?tab=readme-ov-file#1-full-version).
 
+## Where are the images hosted?
+
+The images are stored on Cloudflare R2 Object Stoage.
+
+## Is there a cost associated with hosting the photos, and is it sustainable without charging a fee?
+
+There is no cost because we fall within the free tier of [Cloudflare R2](https://developers.cloudflare.com/r2/pricing/#free-tier), which allows 10 gb of storage and 10 million reads per month. We are unlikely to reach those numbers any time soon! And because the images are resized to no more than 900 px, the total storage size is only 1.6 gb, well within the 10 gb that's allowed for free.
+
 ## What taxonomy do you use?
 
 We use the [eBird/Clementts](https://www.birds.cornell.edu/clementschecklist/introduction/updateindex/october-2024/2024-citation-checklist-downloads) taxonomy.
