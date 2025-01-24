@@ -75,7 +75,9 @@ export default function Landing() {
 
       <section className="bg-gray-100 py-10">
         <div className="container mx-auto">
-          <h3 className="text-2xl font-bold text-gray-800 mb-6">Browse by Family</h3>
+          <h3 className="text-2xl font-bold text-gray-800 mb-6" id="browse">
+            Browse by Family
+          </h3>
           <SelectBasic
             options={Families.map((family) => ({ label: `${family.name}`, value: family.code }))}
             onChange={(selectedOption) => setFamily(selectedOption?.value || Families[0].code)}
@@ -124,7 +126,9 @@ export default function Landing() {
       </section>
 
       <section className="container mx-auto px-6 py-10">
-        <h3 className="text-2xl font-bold text-gray-800 mb-4">License Breakdown</h3>
+        <h3 className="text-2xl font-bold text-gray-800 mb-4" id="license-breakdown">
+          License Breakdown
+        </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {license.map((item, index) => (
             <div key={index} className="p-4 bg-white rounded shadow">
@@ -138,7 +142,9 @@ export default function Landing() {
 
       <section className="bg-gray-100 py-10">
         <div className="container mx-auto">
-          <h3 className="text-2xl font-bold text-gray-800 mb-6">Recently Updated Images</h3>
+          <h3 className="text-2xl font-bold text-gray-800 mb-6" id="recently-updated">
+            Recently Updated Images
+          </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             {RecentlyDownloaded.map((item) => (
               <div key={item.code} className="bg-white rounded shadow overflow-hidden">
