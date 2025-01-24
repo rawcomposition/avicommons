@@ -2,6 +2,7 @@ import Stats from "data/stats.json";
 import RecentlyDownloaded from "data/recently-downloaded.json";
 import Link from "next/link";
 import { License, LicenseLabel } from "lib/types";
+import { getUrl } from "lib/species";
 
 export default function Landing() {
   const { total, withImg, percent, license, source, taxonVersions } = Stats;
@@ -43,11 +44,14 @@ export default function Landing() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             {RecentlyDownloaded.map((item) => (
               <div key={item.code} className="bg-white rounded shadow overflow-hidden">
-                <img src={""} alt={item.name} className="w-full h-40 object-cover" />
+                <img src={getUrl(item.code, item.key, "320")} alt={item.name} className="w-full aspect-[4/3]" />
                 <div className="p-4">
                   <h4 className="font-bold text-gray-800 text-lg">{item.name}</h4>
                   <p className="text-sm text-gray-600 mt-2">
-                    By {item.author} ({LicenseLabel[item.license as License] || item.license})
+                    <span className="font-medium">{item.author}</span>{" "}
+                    <span className="bg-gray-200/70 rounded-md px-1.5 py-0.5 text-xs">
+                      {LicenseLabel[item.license as License] || item.license}
+                    </span>
                   </p>
                 </div>
               </div>

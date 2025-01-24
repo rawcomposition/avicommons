@@ -276,3 +276,9 @@ export async function getSourceInfo(source: string, sourceId: string | undefined
       throw new Error("Unsupported source");
   }
 }
+
+const AVICOMMONS_DOMAIN = "https://static.avicommons.org";
+
+export const getUrl = (code: string, key: string, size: "240" | "320" | "480" | "900" = "240") => {
+  return `${AVICOMMONS_DOMAIN}/${code}-${key}-${size}.jpg`;
+};
