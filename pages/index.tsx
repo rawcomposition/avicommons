@@ -8,6 +8,7 @@ import Families from "data/taxon-families.json";
 import SelectBasic from "components/ReactSelectStyled";
 import { useQuery } from "@tanstack/react-query";
 import dayjs from "dayjs";
+import Head from "next/head";
 
 const PAGE_SIZE = 12;
 
@@ -29,18 +30,27 @@ export default function Landing() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <section className="bg-gray-100 py-10">
+      <Head>
+        <title>Avicommons | Creative Commons Bird Thumbnails</title>
+        <meta
+          name="description"
+          content="Integrate Creative Commons licensed bird thumbnails into your app or website."
+        />
+      </Head>
+      <section className="bg-gray-800 py-12">
         <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold text-gray-800">Your Source for Bird Thumbnails</h2>
-          <p className="mt-4 text-lg text-gray-600">
+          <h2 className="text-4xl font-bold text-gray-200">Your Source for Bird Thumbnails</h2>
+          <p className="mt-4 text-lg text-gray-200">
             Integrate <strong>Creative Commons</strong> licensed images into your app or website.
           </p>
-          <p className="mt-2 text-gray-600">Supported eBird Taxonomy Versions: {taxonVersions.join(", ")}.</p>
-          <Link href="/get-started">
-            <button className="mt-6 px-6 py-3 bg-blue-600 text-white rounded shadow hover:bg-blue-700 transition">
-              Get Started Now
-            </button>
-          </Link>
+          <p className="mt-2 text-gray-200">Supported eBird Taxonomy Versions: {taxonVersions.join(", ")}.</p>
+          <a
+            href="https://github.com/rawcomposition/avicommons?tab=readme-ov-file#getting-started"
+            target="_blank"
+            className="mt-6 px-6 py-3 bg-blue-600 text-white rounded shadow hover:bg-blue-700 transition inline-block"
+          >
+            Get Started Now
+          </a>
         </div>
       </section>
 
@@ -55,6 +65,10 @@ export default function Landing() {
             <p className="mt-2 text-gray-600 text-xl">
               {withImg.toLocaleString()} <span className="text-gray-500">({percent})</span>
             </p>
+          </div>
+          <div className="p-6 bg-white rounded shadow">
+            <h3 className="text-lg font-bold text-gray-800">Taxonomy</h3>
+            <p className="mt-2 text-gray-600 text-lg">eBird/Clements v2024</p>
           </div>
         </div>
       </section>
