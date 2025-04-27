@@ -17,6 +17,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     .sort({ order: 1 })
     .lean();
 
+  let count = 0;
+
   for (const { sourceKey, crop, _id, flip } of species) {
     const filename = `${_id}-${sourceKey}`;
     const originalPath = path.join(process.cwd(), "originals", `${filename}.jpg`);
@@ -50,10 +52,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       );
 
       await Species.updateOne({ _id }, { isProcessed: true });
+      count++;
     } catch (error) {
       console.log("ERROR:", _id, error);
     }
   }
 
-  res.status(200).json({ success: true });
+  res.status(200).json({ success: true, count });
 }

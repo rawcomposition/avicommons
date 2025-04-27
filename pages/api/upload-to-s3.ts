@@ -20,6 +20,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     .limit(LIMIT)
     .lean();
 
+  let count = 0;
+
   for (const { sourceKey, _id } of species) {
     try {
       await Promise.all(
@@ -32,10 +34,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       );
 
       await Species.updateOne({ _id }, { isUploaded: true });
+      count++;
     } catch (error) {
       console.log("ERROR:", _id, error);
     }
   }
 
-  res.status(200).json({ success: true });
+  res.status(200).json({ success: true, count });
 }

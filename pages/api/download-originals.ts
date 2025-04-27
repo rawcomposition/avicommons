@@ -5,7 +5,6 @@ import { getSourceImgUrl } from "lib/species";
 import path from "path";
 import fs from "fs";
 
-const FILTER_SOURCE = "inat";
 const LIMIT = 10000;
 const DELAY = 0;
 
@@ -19,7 +18,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   const species = await Species.find(
     {
       crop: { $exists: true },
-      source: FILTER_SOURCE,
       downloadedAt: { $exists: false },
     },
     ["source", "sourceId", "sourceKey", "iNatFileExt"]
@@ -37,6 +35,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
       if (fs.existsSync(outputPath)) {
         console.log("Already exists:", filename);
+        await Species.updateOne({ _id }, { downloadedAt: new Date() });
+        count++;
         continue;
       }
 
@@ -59,6 +59,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       const buffer = await originalRes.arrayBuffer();
       // @ts-ignore
       fs.writeFileSync(outputPath, Buffer.from(buffer));
+      await Species.updateOne({ _id }, { downloadedAt: new Date() });
       count++;
     } catch (error) {
       console.log("ERROR:", _id);
