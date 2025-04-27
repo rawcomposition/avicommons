@@ -28,6 +28,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     .limit(LIMIT)
     .lean();
 
+  let count = 0;
+
   for (const { source, sourceId, _id, sourceKey, iNatFileExt } of species) {
     try {
       const filename = `${_id}-${sourceKey}.jpg`;
@@ -55,11 +57,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       }
 
       const buffer = await originalRes.arrayBuffer();
+      // @ts-ignore
       fs.writeFileSync(outputPath, Buffer.from(buffer));
+      count++;
     } catch (error) {
       console.log("ERROR:", _id);
     }
   }
 
-  res.status(200).json({ success: true });
+  res.status(200).json({ success: true, count });
 }
