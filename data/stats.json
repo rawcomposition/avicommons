@@ -1,7 +1,7 @@
 {
   "total": 11145,
-  "withImg": 10090,
-  "percent": "90.5%",
+  "withImg": 10092,
+  "percent": "90.6%",
   "license": [
     {
       "id": "cc0",
@@ -12,13 +12,13 @@
     {
       "id": "cc-by",
       "label": "CC BY",
-      "count": 923,
+      "count": 924,
       "percent": "8.3%"
     },
     {
       "id": "cc-by-nc",
       "label": "CC BY-NC",
-      "count": 7354,
+      "count": 7355,
       "percent": "66.0%"
     },
     {
@@ -38,7 +38,7 @@
     {
       "id": "inat",
       "label": "iNaturalist",
-      "count": 9024,
+      "count": 9026,
       "percent": "81.0%"
     },
     {

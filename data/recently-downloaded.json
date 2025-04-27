@@ -1,5 +1,41 @@
 [
   {
+    "code": "bubtan2",
+    "name": "Burnished-buff Tanager",
+    "sciName": "Stilpnia cayana",
+    "license": "CC BY 2.0",
+    "key": "98602238",
+    "author": "Reinaldo Oliveira Elias",
+    "downloadedAt": "2025-04-27T17:03:16.245Z"
+  },
+  {
+    "code": "caltow",
+    "name": "California Towhee",
+    "sciName": "Melozone crissalis",
+    "license": "CC0 2.0",
+    "key": "488381869",
+    "author": "Adam Jackson",
+    "downloadedAt": "2025-04-27T16:57:59.790Z"
+  },
+  {
+    "code": "yebbar1",
+    "name": "Western Yellow-billed Barbet",
+    "sciName": "Trachylaemus goffinii",
+    "license": "cc-by-nc",
+    "key": "480782749",
+    "author": "Nik Borrow",
+    "downloadedAt": "2025-04-27T16:57:59.743Z"
+  },
+  {
+    "code": "wsfrai1",
+    "name": "White-striped Forest Rail",
+    "sciName": "Rallicula leucospila",
+    "license": "cc-by-nc",
+    "key": "449329950",
+    "author": "marcthibault",
+    "downloadedAt": "2025-04-27T16:57:59.690Z"
+  },
+  {
     "code": "graeao1",
     "name": "Grayish Eagle-Owl",
     "sciName": "Bubo cinerascens",
@@ -7,15 +43,6 @@
     "key": "6162037",
     "author": "Nik Borrow",
     "downloadedAt": "2024-12-02T19:42:30.165Z"
-  },
-  {
-    "code": "bubtan2",
-    "name": "Burnished-buff Tanager",
-    "sciName": "Stilpnia cayana",
-    "license": "CC BY-NC 2.0",
-    "key": "440468459",
-    "author": "Augusto Alves",
-    "downloadedAt": "2024-12-02T18:34:14.296Z"
   },
   {
     "code": "whrsha5",
@@ -43,32 +70,5 @@
     "key": "119646769",
     "author": "Benoît Segerer",
     "downloadedAt": "2024-12-02T18:34:13.961Z"
-  },
-  {
-    "code": "babcus1",
-    "name": "Bar-bellied Cuckooshrike",
-    "sciName": "Coracina striata",
-    "license": "CC BY-NC 2.0",
-    "key": "313299533",
-    "author": "Dixon Lau",
-    "downloadedAt": "2024-12-02T18:34:13.848Z"
-  },
-  {
-    "code": "andtyr3",
-    "name": "Jelski's Black-Tyrant",
-    "sciName": "Knipolegus signatus",
-    "license": "cc-by-nc",
-    "key": "101976540",
-    "author": "Christian Nunes",
-    "downloadedAt": "2024-12-02T18:34:13.738Z"
-  },
-  {
-    "code": "sootyr1",
-    "name": "Sooty Tyrannulet",
-    "sciName": "Serpophaga nigricans",
-    "license": "CC BY-NC 2.0",
-    "key": "409459430",
-    "author": "joseluisblazquez",
-    "downloadedAt": "2024-12-02T18:34:13.609Z"
   }
 ]
