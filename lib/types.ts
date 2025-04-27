@@ -46,6 +46,7 @@ export type SpeciesT = {
   name: string;
   sciName: string;
   order: number;
+  isExtinct: boolean;
   source: ImgSource;
   sourceId: string;
   author: string;

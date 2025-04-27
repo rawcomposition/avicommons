@@ -120,6 +120,7 @@ export default function SpeciesList({
                 <h2 className="text-lg font-bold mb-2">
                   <span className="font-medium text-gray-500 text-[17px]">{index + 1 + startCount}.</span>{" "}
                   {species.name}
+                  {species.isExtinct && <span className="text-red-700 text-sm ml-2">(Extinct)</span>}
                 </h2>
                 <div className="flex gap-4 text-[13px] text-gray-500">
                   <span>
@@ -242,6 +243,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     "license",
     "author",
     "sourceKey",
+    "isExtinct",
   ])
     .sort({ order: 1 })
     .skip(skip)

@@ -20,6 +20,10 @@ const SpeciesSchema = new Schema({
     type: Number,
     required: true,
   },
+  isExtinct: {
+    type: Boolean,
+    default: false,
+  },
   source: String,
   sourceId: String,
   iNatObsId: String,

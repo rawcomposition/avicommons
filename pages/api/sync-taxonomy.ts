@@ -47,6 +47,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         speciesItem.name !== item.comName ||
         speciesItem.sciName !== item.sciName ||
         speciesItem.order !== item.taxonOrder ||
+        speciesItem.isExtinct !== item.extinct ||
         !speciesItem.taxonVersions?.includes(VERSION.toString());
 
       if (needsUpdate) {
@@ -54,7 +55,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
           updateOne: {
             filter: { _id: item.speciesCode },
             update: {
-              $set: { familyCode: item.familyCode, name: item.comName, sciName: item.sciName, order: item.taxonOrder },
+              $set: {
+                familyCode: item.familyCode,
+                name: item.comName,
+                sciName: item.sciName,
+                order: item.taxonOrder,
+                isExtinct: item.extinct,
+              },
               $addToSet: { taxonVersions: VERSION.toString() },
             },
           },
@@ -72,6 +79,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             name: item.comName,
             sciName: item.sciName,
             order: item.taxonOrder,
+            isExtinct: item.extinct,
             taxonVersions: [VERSION.toString()],
           },
         },
