@@ -13,7 +13,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
   await connect();
 
-  const species = await Species.find({ crop: { $exists: true }, downloadedAt: { $exists: false } })
+  const species = await Species.find({ crop: { $exists: true }, isProcessed: false })
     .sort({ order: 1 })
     .lean();
 
@@ -49,7 +49,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         })
       );
 
-      await Species.updateOne({ _id }, { downloadedAt: new Date() });
+      await Species.updateOne({ _id }, { isProcessed: true });
     } catch (error) {
       console.log("ERROR:", _id, error);
     }

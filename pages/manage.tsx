@@ -5,7 +5,7 @@ import { GetServerSideProps } from "next";
 import { ImgSourceLabel, LicenseLabel, SpeciesT } from "lib/types";
 import Species from "models/Species";
 import AdminPage from "components/AdminPage";
-import { getSourceImgUrl } from "lib/species";
+import { getUrl } from "lib/species";
 import clsx from "clsx";
 import connect from "lib/mongo";
 import Families from "data/taxon-families.json";
@@ -58,7 +58,7 @@ export default function SpeciesList({
         </div>
         <div className="flex gap-4 mb-6 items-center">
           <Link
-            href={`/species?page=1&filter=all&family=${family}`}
+            href={`/manage?page=1&filter=all&family=${family}`}
             className={clsx(
               "px-5 py-1 rounded-full font-medium",
               !filter || filter === "all" ? "bg-primary text-white" : "bg-gray-200 text-gray-600"
@@ -67,7 +67,7 @@ export default function SpeciesList({
             All ({totalCount.toLocaleString()})
           </Link>
           <Link
-            href={`/species?page=1&filter=withoutImg&family=${family}`}
+            href={`/manage?page=1&filter=withoutImg&family=${family}`}
             className={clsx(
               "px-5 py-1 rounded-full font-medium",
               filter === "withoutImg" ? "bg-primary text-white" : "bg-gray-200 text-gray-600"
@@ -80,9 +80,9 @@ export default function SpeciesList({
           options={Families.map((family) => ({ label: `${family.name} (${family.count})`, value: family.code }))}
           onChange={(selectedOption) => {
             if (selectedOption) {
-              router.push(`/species?page=1&filter=${filter}&family=${selectedOption.value}`);
+              router.push(`/manage?page=1&filter=${filter}&family=${selectedOption.value}`);
             } else {
-              router.push(`/species?page=1&filter=${filter}`);
+              router.push(`/manage?page=1&filter=${filter}`);
             }
           }}
           value={
@@ -104,16 +104,7 @@ export default function SpeciesList({
                 {species.crop && species.downloadedAt ? (
                   <div className="relative">
                     <img
-                      src={
-                        species.hasImg && species.downloadedAt
-                          ? `/species-images/${species._id}-240.jpg`
-                          : getSourceImgUrl({
-                              source: species.source,
-                              sourceId: species.sourceId,
-                              size: species.source === "ebird" ? 320 : 240,
-                              ext: species.iNatFileExt,
-                            }) || ""
-                      }
+                      src={species.sourceKey ? getUrl(species._id, species.sourceKey, "240") : ""}
                       alt={species.name}
                       loading="lazy"
                       className="aspect-[4/3] object-cover w-[100px] rounded-md"
@@ -193,7 +184,7 @@ export default function SpeciesList({
         <div className="mt-8 flex justify-center">
           {currentPage > 1 && (
             <Link
-              href={`/species?page=${currentPage - 1}&filter=${filter}&family=${family}`}
+              href={`/manage?page=${currentPage - 1}&filter=${filter}&family=${family}`}
               className="mx-2 px-4 py-2 bg-primary hover:bg-secondary text-white rounded"
             >
               Previous
@@ -204,7 +195,7 @@ export default function SpeciesList({
           </span>
           {currentPage < totalPages && (
             <Link
-              href={`/species?page=${currentPage + 1}&filter=${filter}&family=${family}`}
+              href={`/manage?page=${currentPage + 1}&filter=${filter}&family=${family}`}
               className="mx-2 px-4 py-2 bg-primary hover:bg-secondary text-white rounded"
             >
               Next
@@ -225,9 +216,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   let query: any = { active: true };
   if (filter === "withoutImg") {
-    query = { hasImg: { $ne: true } };
-  }
-  if (filter === "withoutCrop") {
     query = { crop: { $exists: false } };
   }
   if (family !== "all") {
@@ -253,6 +241,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     "crop",
     "license",
     "author",
+    "sourceKey",
   ])
     .sort({ order: 1 })
     .skip(skip)

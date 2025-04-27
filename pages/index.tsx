@@ -15,7 +15,7 @@ const PAGE_SIZE = 12;
 export default function Landing() {
   const [family, setFamily] = React.useState<string>("anatid1");
   const [page, setPage] = React.useState<number>(1);
-  const { total, withImg, percent, license, source, taxonVersions } = Stats;
+  const { total, withImg, percent, license, taxonVersions } = Stats;
 
   const { data } = useQuery<{ photos: OutputPhoto[] }>({
     queryKey: ["/api/photos-by-family", { family }],

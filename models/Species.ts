@@ -50,6 +50,7 @@ const SpeciesSchema = new Schema({
   familyCode: String,
   taxonVersions: [String],
   flip: Boolean,
+  isProcessed: Boolean,
   isUploaded: Boolean,
 });
 

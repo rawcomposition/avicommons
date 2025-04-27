@@ -15,17 +15,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   try {
     await connect();
 
-    const sourceKey = data.source === "inat" ? data.sourceId : generateHash(data.sourceId);
-
     const current = await Species.findById(code);
-
     if (!current) {
       return res.status(404).json({ success: false, error: "Species not found" });
     }
 
-    const unset = current.sourceId !== data.sourceId ? { downloadedAt: 1 } : {};
+    const isSameSourceId = data.sourceId === current.sourceId;
 
-    await Species.updateOne({ _id: code }, { $set: { ...data, sourceKey, isUploaded: false }, $unset: unset });
+    if (isSameSourceId) {
+      await Species.updateOne({ _id: code }, { $set: { ...data, isUploaded: false, isProcessed: false } });
+    } else {
+      const sourceKey = data.source === "inat" ? data.sourceId : generateHash(data.sourceId);
+      await Species.updateOne(
+        { _id: code },
+        { $set: { ...data, sourceKey, isUploaded: false, isProcessed: false }, $unset: { downloadedAt: 1 } }
+      );
+    }
 
     res.status(200).json({ success: true });
   } catch (error: any) {
