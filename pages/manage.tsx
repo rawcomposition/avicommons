@@ -209,6 +209,10 @@ export default function SpeciesList({
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  if (process.env.NODE_ENV !== "development") {
+    return { notFound: true };
+  }
+
   const page = Number(context.query.page) || 1;
   const limit = PER_PAGE;
   const skip = (page - 1) * limit;

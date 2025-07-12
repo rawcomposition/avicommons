@@ -1,12 +1,12 @@
 {
   "total": 11145,
-  "withImg": 10092,
-  "percent": "90.6%",
+  "withImg": 10112,
+  "percent": "90.7%",
   "license": [
     {
       "id": "cc0",
       "label": "CC0",
-      "count": 802,
+      "count": 805,
       "percent": "7.2%"
     },
     {
@@ -18,13 +18,13 @@
     {
       "id": "cc-by-nc",
       "label": "CC BY-NC",
-      "count": 7355,
-      "percent": "66.0%"
+      "count": 7370,
+      "percent": "66.1%"
     },
     {
       "id": "cc-by-sa",
       "label": "CC BY-SA",
-      "count": 871,
+      "count": 873,
       "percent": "7.8%"
     },
     {
@@ -38,8 +38,8 @@
     {
       "id": "inat",
       "label": "iNaturalist",
-      "count": 9026,
-      "percent": "81.0%"
+      "count": 9046,
+      "percent": "81.2%"
     },
     {
       "id": "wikipedia",

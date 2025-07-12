@@ -192,28 +192,28 @@ export default function Import({ data, code }: Props) {
                 <div className="flex gap-4 border-b pb-2.5 mt-1">
                   <Link
                     className="text-sky-600 hover:text-sky-700 font-semibold"
-                    href={`https://www.google.com/search?q=${data?.name}`}
+                    href={`https://www.google.com/search?q=${data.name}`}
                     target="_blank"
                   >
                     Google
                   </Link>
                   <Link
                     className="text-sky-600 hover:text-sky-700 font-semibold"
-                    href={`https://ebird.org/species/${data?._id}`}
+                    href={`https://ebird.org/species/${data._id}`}
                     target="_blank"
                   >
                     eBird
                   </Link>
                   <Link
                     className="text-sky-600 hover:text-sky-700 font-semibold"
-                    href={`https://www.flickr.com/search/?text=${data?.name}&license=2%2C3%2C4%2C5%2C6%2C9`}
+                    href={`https://www.flickr.com/search/?text=${data.name}&license=2%2C3%2C4%2C5%2C6%2C9`}
                     target="_blank"
                   >
                     Flickr
                   </Link>
                   <Link
                     className="text-sky-600 hover:text-sky-700 font-semibold"
-                    href={`https://commons.wikimedia.org/w/index.php?search=${data?.sciName}&title=Special:MediaSearch&go=Go&type=image`}
+                    href={`https://commons.wikimedia.org/w/index.php?search=${data.sciName}&title=Special:MediaSearch&go=Go&type=image`}
                     target="_blank"
                   >
                     Wikipedia
@@ -223,14 +223,14 @@ export default function Import({ data, code }: Props) {
                     className="text-sky-600 hover:text-sky-700 font-semibold"
                     onClick={() => {
                       open(
-                        `https://www.inaturalist.org/observations?q=${data?.sciName}&photo_license=cc0,cc-by-nc-sa,cc-by-sa,cc-by-nc,cc-by`,
+                        `https://www.inaturalist.org/observations?q=${data.sciName}&photo_license=cc0,cc-by-nc-sa,cc-by-sa,cc-by-nc,cc-by`,
                         "_blank"
                       );
                       open(
-                        `https://www.inaturalist.org/observations?q=${data?.sciName}&photo_license=cc0,cc-by-nc-sa,cc-by-sa,cc-by-nc,cc-by&order_by=votes`,
+                        `https://www.inaturalist.org/observations?q=${data.sciName}&photo_license=cc0,cc-by-nc-sa,cc-by-sa,cc-by-nc,cc-by&order_by=votes`,
                         "_blank"
                       );
-                      open(`https://www.inaturalist.org/taxa/${data?.sciName}`, "_blank");
+                      open(`https://www.inaturalist.org/taxa/${data.sciName}`, "_blank");
                     }}
                   >
                     iNat CC
@@ -349,6 +349,9 @@ export default function Import({ data, code }: Props) {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  if (process.env.NODE_ENV !== "development") {
+    return { notFound: true };
+  }
   const { code } = query;
   await connect();
   const species = await Species.findById(code);

@@ -1,6 +1,5 @@
 import type { AppProps } from "next/app";
 import "../styles/globals.css";
-import Header from "components/Header";
 import { Toaster } from "react-hot-toast";
 import NextNProgress from "nextjs-progressbar";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -18,7 +17,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <Toaster containerStyle={{ zIndex: 10001 }} />
-      <Header />
       <NextNProgress height={1} />
       <Component {...pageProps} />
     </QueryClientProvider>
