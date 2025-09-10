@@ -3,11 +3,10 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 const resend = new Resend(process.env.RESEND_KEY);
 
-type SuggestImageData = {
-  imageUrl: string;
-  comments: string;
+type ContactData = {
   name: string;
   email: string;
+  message: string;
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -15,9 +14,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { imageUrl, comments, name, email }: SuggestImageData = req.body;
+  const { name, email, message }: ContactData = req.body;
 
-  if (!imageUrl || !name || !email) {
+  if (!name || !email || !message) {
     return res.status(400).json({ error: "Missing required fields" });
   }
 
@@ -29,15 +28,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     await resend.emails.send({
       from: process.env.RESEND_EMAIL,
       to: process.env.RESEND_EMAIL,
-      subject: `New image suggestion from ${name}`,
+      subject: `New Avicommons message from ${name}`,
       html: `
         <strong>Name:</strong> ${name}<br />
-        <strong>Email:</strong> ${email}<br />
-        <strong>Image URL:</strong> <a href="${imageUrl}">${imageUrl}</a>
-        ${comments ? `<br /><strong>Comments</strong><br />${comments}` : ""}
+        <strong>Email:</strong> ${email}<br /><br />
+        <strong>Message:</strong><br />${message}
         <br />
         <hr>
-        <p><em>This suggestion was submitted through the Avicommons website.</em></p>
+        <p><em>This message was sent through the Avicommons contact form.</em></p>
         <p><em>You can reply directly to this email to contact the user.</em></p>
       `,
       replyTo: email,

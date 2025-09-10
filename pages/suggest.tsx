@@ -43,7 +43,6 @@ export default function SuggestImage() {
       <div className="min-h-screen bg-gray-50">
         <Head>
           <title>Suggest Image - Avicommons</title>
-          <meta name="description" content="Suggest a new bird image for Avicommons" />
         </Head>
 
         <div className="container mx-auto px-6 pb-10 pt-8">
@@ -113,20 +112,14 @@ export default function SuggestImage() {
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                         Your Name <span className="text-red-600">*</span>
                       </label>
-                      <Input type="text" name="name" required placeholder="E.g. John Doe" className="w-full" />
+                      <Input type="text" name="name" required className="w-full" />
                     </div>
 
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                         Your Email <span className="text-red-600">*</span>
                       </label>
-                      <Input
-                        type="email"
-                        name="email"
-                        required
-                        placeholder="E.g. john@example.com"
-                        className="w-full"
-                      />
+                      <Input type="email" name="email" required className="w-full" />
                     </div>
                   </div>
 
