@@ -75,6 +75,18 @@ export default function Landing() {
           </div>
         </section>
 
+        <section className="container mx-auto px-6 pb-10">
+          <div className="text-center">
+            <p className="text-lg text-gray-600">
+              Help us fill in the gaps for species without pictures.{" "}
+              <Link href="/suggest" className="text-blue-600 hover:underline font-medium">
+                Suggest an image
+              </Link>{" "}
+              to improve our collection.
+            </p>
+          </div>
+        </section>
+
         <section className="bg-gray-100 py-10">
           <div className="container mx-auto">
             <h3 className="text-2xl font-bold text-gray-800 mb-6" id="browse">

@@ -16,7 +16,7 @@ const queryClient = new QueryClient({
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
-      <Toaster containerStyle={{ zIndex: 10001 }} />
+      <Toaster containerStyle={{ zIndex: 10001 }} toastOptions={{ duration: 7000 }} />
       <NextNProgress height={1} />
       <Component {...pageProps} />
     </QueryClientProvider>

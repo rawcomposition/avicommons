@@ -14,6 +14,9 @@ export default function ClientPage({ children }: ClientPageProps) {
             <h1 className="text-3xl font-extrabold text-gray-800">Avicommons</h1>
           </Link>
           <nav>
+            <Link href="/suggest" className="text-blue-600 hover:underline px-4 font-medium">
+              Suggest Image
+            </Link>
             <Link
               href="https://github.com/rawcomposition/avicommons?tab=readme-ov-file#getting-started"
               target="_blank"
