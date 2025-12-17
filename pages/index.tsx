@@ -70,7 +70,7 @@ export default function Landing() {
             </div>
             <div className="p-6 bg-white rounded shadow">
               <h3 className="text-lg font-bold text-gray-800">Taxonomy</h3>
-              <p className="mt-2 text-gray-600 text-lg">eBird/Clements v2024</p>
+              <p className="mt-2 text-gray-600 text-lg">eBird/Clements v{taxonVersions[taxonVersions.length - 1]}</p>
             </div>
           </div>
         </section>
