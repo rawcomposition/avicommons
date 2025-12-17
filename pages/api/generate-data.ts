@@ -4,8 +4,7 @@ import Species from "models/Species";
 import { ImgSourceLabel, LicenseLabel, type Stats } from "lib/types";
 import path from "path";
 import fs from "fs";
-
-const VERSIONS = ["2022", "2023", "2024", "2025"];
+import { VERSIONS } from "lib/config";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
   if (process.env.NODE_ENV !== "development") {
