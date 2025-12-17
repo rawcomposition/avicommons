@@ -222,10 +222,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const baseQuery = { active: true };
   let query: any = baseQuery;
   if (filter === "withoutImg") {
-    query = { ...baseQuery, crop: { $exists: false } };
+    query = { ...query, crop: { $exists: false } };
   }
   if (family !== "all") {
-    query = { ...baseQuery, "latestNomenclature.familyCode": family };
+    query = { ...query, "latestNomenclature.familyCode": family };
   }
 
   await connect();
