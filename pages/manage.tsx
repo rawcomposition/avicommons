@@ -19,7 +19,6 @@ type Props = {
   currentPage: number;
   totalPages: number;
   percentWithImg: string;
-  percentCropped: string;
   totalCount: number;
   filteredCount: number;
   withoutImgCount: number;
@@ -33,7 +32,6 @@ export default function SpeciesList({
   currentPage,
   totalPages,
   percentWithImg,
-  percentCropped,
   totalCount,
   filteredCount,
   withoutImgCount,
@@ -51,9 +49,6 @@ export default function SpeciesList({
         <div className="flex items-center gap-4 mb-8">
           <p className="font-medium text-sm">
             Images: <span className="font-bold">{percentWithImg}%</span>
-          </p>
-          <p className="font-medium text-sm">
-            Cropped: <span className="font-bold">{percentCropped}%</span>
           </p>
         </div>
         <div className="flex gap-4 mb-6 items-center">
