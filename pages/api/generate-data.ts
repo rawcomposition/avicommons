@@ -23,17 +23,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       "iNatObsId",
       "sourceId",
       "sourceKey",
-      "name",
-      "sciName",
+      "latestNomenclature",
       "downloadedAt",
-      "familyCode",
     ])
-      .sort({ order: 1 })
+      .sort({ "latestNomenclature.order": 1 })
       .lean(),
     Species.find({ downloadedAt: { $exists: true } }, [
       "_id",
-      "name",
-      "sciName",
+      "latestNomenclature",
       "sourceKey",
       "license",
       "licenseVer",
@@ -96,12 +93,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     .filter((s) => s.downloadedAt)
     .map((it) => ({
       code: it._id,
-      name: it.name,
-      sciName: it.sciName,
+      name: it.latestNomenclature.name,
+      sciName: it.latestNomenclature.sciName,
       license: it.licenseVer ? `${LicenseLabel[it.license] || it.license} ${it.licenseVer}` : it.license,
       key: it.sourceKey,
       by: it.author,
-      family: it.familyCode,
+      family: it.latestNomenclature.familyCode,
     }));
 
   const dataLite = data.reduce<Record<string, string[]>>((acc, it) => {
@@ -114,8 +111,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
   const recentlyDownloadedFormatted = recentlyDownloaded.map((it) => ({
     code: it._id,
-    name: it.name,
-    sciName: it.sciName,
+    name: it.latestNomenclature.name,
+    sciName: it.latestNomenclature.sciName,
     license: it.licenseVer ? `${LicenseLabel[it.license] || it.license} ${it.licenseVer}` : it.license,
     key: it.sourceKey,
     author: it.author,

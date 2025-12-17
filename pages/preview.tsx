@@ -25,7 +25,7 @@ export default function SpeciesList({ species, currentPage, totalPages }: Props)
             <img
               key={species._id}
               src={`/species-images/${species._id}-240.jpg`}
-              alt={species.name}
+              alt={species.latestNomenclature.name}
               className="aspect-[4/3] object-cover w-[120px] rounded-md"
             />
           ))}
@@ -70,7 +70,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const filteredCount = await Species.countDocuments(query);
   const totalPages = Math.ceil(filteredCount / limit);
 
-  const speciesRes = await Species.find(query, ["_id"]).sort({ order: 1 }).skip(skip).limit(limit);
+  const speciesRes = await Species.find(query, ["_id", "latestNomenclature"]).sort({ "latestNomenclature.order": 1 }).skip(skip).limit(limit);
 
   const species = JSON.parse(JSON.stringify(speciesRes));
 

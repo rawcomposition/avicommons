@@ -105,7 +105,7 @@ export default function SpeciesList({
                   <div className="relative">
                     <img
                       src={species.sourceKey ? getUrl(species._id, species.sourceKey, "240") : ""}
-                      alt={species.name}
+                      alt={species.latestNomenclature.name}
                       loading="lazy"
                       className="aspect-[4/3] object-cover w-[100px] rounded-md"
                     />
@@ -119,8 +119,8 @@ export default function SpeciesList({
               <div>
                 <h2 className="text-lg font-bold mb-2">
                   <span className="font-medium text-gray-500 text-[17px]">{index + 1 + startCount}.</span>{" "}
-                  {species.name}
-                  {species.isExtinct && <span className="text-red-700 text-sm ml-2">(Extinct)</span>}
+                  {species.latestNomenclature.name}
+                  {species.latestNomenclature.isExtinct && <span className="text-red-700 text-sm ml-2">(Extinct)</span>}
                 </h2>
                 <div className="flex gap-4 text-[13px] text-gray-500">
                   <span>
@@ -145,7 +145,7 @@ export default function SpeciesList({
                     <>
                       <Link
                         className="text-sky-600 hover:text-sky-700 font-semibold"
-                        href={`https://www.google.com/search?q=${species.name}`}
+                        href={`https://www.google.com/search?q=${species.latestNomenclature.name}`}
                         target="_blank"
                       >
                         Google
@@ -163,14 +163,14 @@ export default function SpeciesList({
                         onClick={() => {
                           open(`/${species._id}/edit`, "_blank");
                           open(
-                            `https://www.inaturalist.org/observations?q=${species.sciName}&photo_license=cc0,cc-by-nc-sa,cc-by-sa,cc-by-nc,cc-by`,
+                            `https://www.inaturalist.org/observations?q=${species.latestNomenclature.sciName}&photo_license=cc0,cc-by-nc-sa,cc-by-sa,cc-by-nc,cc-by`,
                             "_blank"
                           );
                           open(
-                            `https://www.inaturalist.org/observations?q=${species.sciName}&photo_license=cc0,cc-by-nc-sa,cc-by-sa,cc-by-nc,cc-by&order_by=votes`,
+                            `https://www.inaturalist.org/observations?q=${species.latestNomenclature.sciName}&photo_license=cc0,cc-by-nc-sa,cc-by-sa,cc-by-nc,cc-by&order_by=votes`,
                             "_blank"
                           );
-                          open(`https://www.inaturalist.org/taxa/${species.sciName}`, "_blank");
+                          open(`https://www.inaturalist.org/taxa/${species.latestNomenclature.sciName}`, "_blank");
                         }}
                       >
                         iNat CC
@@ -219,37 +219,36 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const filter = context.query.filter || "all";
   const family = context.query.family || "all";
 
-  let query: any = { active: true };
+  const baseQuery = { active: true };
+  let query: any = baseQuery;
   if (filter === "withoutImg") {
-    query = { crop: { $exists: false } };
+    query = { ...baseQuery, crop: { $exists: false } };
   }
   if (family !== "all") {
-    query.familyCode = family;
+    query = { ...baseQuery, "latestNomenclature.familyCode": family };
   }
 
   await connect();
-  const totalCount = await Species.countDocuments({});
+  const totalCount = await Species.countDocuments(baseQuery);
   const filteredCount = await Species.countDocuments(query);
-  const withImgCount = await Species.countDocuments({ crop: { $exists: true } });
+  const withImgCount = await Species.countDocuments({ ...baseQuery, crop: { $exists: true } });
   const totalPages = Math.ceil(filteredCount / limit);
   const percentWithImg = ((withImgCount / totalCount) * 100).toFixed(1);
   const startCount = (page - 1) * limit;
 
   const speciesRes = await Species.find(query, [
     "_id",
-    "name",
+    "latestNomenclature",
     "source",
     "sourceId",
-    "sciName",
     "iNatFileExt",
     "downloadedAt",
     "crop",
     "license",
     "author",
     "sourceKey",
-    "isExtinct",
   ])
-    .sort({ order: 1 })
+    .sort({ "latestNomenclature.order": 1 })
     .skip(skip)
     .limit(limit);
 

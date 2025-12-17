@@ -16,7 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   await connect();
 
   const results = await Species.find({ source: "inat", iNatUserId: { $exists: false } })
-    .sort({ order: 1 })
+    .sort({ "latestNomenclature.order": 1 })
     .skip(OFFSET)
     .limit(LIMIT)
     .lean();
@@ -30,8 +30,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       continue;
     }
     const { author, license, iNatUserId, speciesName } = info;
-    if (speciesName !== species.sciName) {
-      console.log("NAME MISMATCH", species._id, species.sciName, "->", speciesName);
+    if (speciesName !== species.latestNomenclature.sciName) {
+      console.log("NAME MISMATCH", species._id, species.latestNomenclature.sciName, "->", speciesName);
       continue;
     }
     if (author !== species.author) {

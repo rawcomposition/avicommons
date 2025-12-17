@@ -4,8 +4,19 @@ import Species from "models/Species";
 import fs from "fs";
 import path from "path";
 
-const VERSION = 2024;
-const DRY_RUN = true;
+// NOTE: This script is intended to be run sequentially. Syncing older versions will cause inaccurate results.
+const VERSION = 2025;
+const DRY_RUN = false;
+
+// TODO: Unset the nomenclature from main document object --------------------------------------------------
+
+const sanitizeComName = (comName: string) => {
+  // Remove trailing hyphens which sometimes appear in older taxonomies
+  if (comName.endsWith("-")) {
+    return comName.slice(0, -1);
+  }
+  return comName;
+};
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
   if (process.env.NODE_ENV !== "development") {
@@ -34,6 +45,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   let unchangedCount = 0;
 
   for (const item of taxonomy) {
+    const comName = sanitizeComName(item.comName);
     versionSpecies.push(item.speciesCode);
     if (!families.find((f) => f.code === item.familyCode)) {
       families.push({ code: item.familyCode, name: item.familyComName, count: 1 });
@@ -41,13 +53,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       families.find((f) => f.code === item.familyCode)!.count++;
     }
     const speciesItem = species.find((s) => s._id === item.speciesCode);
+
+    const nomenclature = {
+      name: comName,
+      sciName: item.sciName,
+      familyCode: item.familyCode,
+      order: item.taxonOrder,
+      isExtinct: item.extinct,
+    };
+
     if (speciesItem) {
       const needsUpdate =
-        speciesItem.familyCode !== item.familyCode ||
-        speciesItem.name !== item.comName ||
-        speciesItem.sciName !== item.sciName ||
-        speciesItem.order !== item.taxonOrder ||
-        speciesItem.isExtinct !== item.extinct ||
+        speciesItem.latestNomenclature.familyCode !== item.familyCode ||
+        speciesItem.latestNomenclature.name !== comName ||
+        speciesItem.latestNomenclature.sciName !== item.sciName ||
+        speciesItem.latestNomenclature.order !== item.taxonOrder ||
+        speciesItem.latestNomenclature.isExtinct !== item.extinct ||
         !speciesItem.taxonVersions?.includes(VERSION.toString());
 
       if (needsUpdate) {
@@ -56,11 +77,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
             filter: { _id: item.speciesCode },
             update: {
               $set: {
-                familyCode: item.familyCode,
-                name: item.comName,
-                sciName: item.sciName,
-                order: item.taxonOrder,
-                isExtinct: item.extinct,
+                [`nomenclature.${VERSION}`]: nomenclature,
+                latestNomenclature: nomenclature,
               },
               $addToSet: { taxonVersions: VERSION.toString() },
             },
@@ -75,11 +93,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         insertOne: {
           document: {
             _id: item.speciesCode,
-            familyCode: item.familyCode,
-            name: item.comName,
-            sciName: item.sciName,
-            order: item.taxonOrder,
-            isExtinct: item.extinct,
+            [`nomenclature.${VERSION}`]: nomenclature,
+            latestNomenclature: nomenclature,
             taxonVersions: [VERSION.toString()],
           },
         },
