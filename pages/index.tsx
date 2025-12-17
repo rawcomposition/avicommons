@@ -93,8 +93,8 @@ export default function Landing() {
               Browse by Family
             </h3>
             <SelectBasic
-              options={Families.map((family) => ({ label: `${family.name}`, value: family.code }))}
-              onChange={(selectedOption) => setFamily(selectedOption?.value || Families[0].code)}
+              options={Families.map((family) => ({ label: `${family.name}`, value: family.code || "" }))}
+              onChange={(selectedOption) => setFamily(selectedOption?.value || Families[0].code || "")}
               value={{
                 label: Families.find((it) => it.code === family)?.name,
                 value: family,
