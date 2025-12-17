@@ -14,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   await connect();
 
   const species = await Species.find({ crop: { $exists: true }, isProcessed: false })
-    .sort({ order: 1 })
+    .sort({ "latestNomenclature.order": 1 })
     .lean();
 
   let count = 0;

@@ -4,128 +4,141 @@ import Species from "models/Species";
 import { ImgSourceLabel, LicenseLabel, type Stats } from "lib/types";
 import path from "path";
 import fs from "fs";
+import { VERSIONS } from "lib/config";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
   if (process.env.NODE_ENV !== "development") {
     return res.status(403).json({ success: false, error: "Not allowed" });
   }
 
-  await connect();
+  for (const version of VERSIONS) {
+    const isLatest = version === VERSIONS[VERSIONS.length - 1];
 
-  const [species, recentlyDownloaded, totalSpecies] = await Promise.all([
-    Species.find({ downloadedAt: { $exists: true } }, [
-      "source",
-      "license",
-      "licenseVer",
-      "taxonVersions",
-      "author",
-      "iNatUserId",
-      "iNatObsId",
-      "sourceId",
-      "sourceKey",
-      "name",
-      "sciName",
-      "downloadedAt",
-      "familyCode",
-    ])
-      .sort({ order: 1 })
-      .lean(),
-    Species.find({ downloadedAt: { $exists: true } }, [
-      "_id",
-      "name",
-      "sciName",
-      "sourceKey",
-      "license",
-      "licenseVer",
-      "author",
-      "downloadedAt",
-    ])
-      .sort({ downloadedAt: -1 })
-      .limit(8)
-      .lean(),
-    Species.countDocuments({}),
-  ]);
+    await connect();
 
-  const withImg = species.filter((s) => s.downloadedAt).length;
-  const percentWithImg = ((withImg / totalSpecies) * 100).toFixed(1) + "%";
+    const [species, recentlyDownloaded, totalSpecies] = await Promise.all([
+      Species.find({ downloadedAt: { $exists: true }, taxonVersions: version }, [
+        "source",
+        "license",
+        "licenseVer",
+        "taxonVersions",
+        "author",
+        "iNatUserId",
+        "iNatObsId",
+        "sourceId",
+        "sourceKey",
+        "nomenclature",
+        "downloadedAt",
+      ])
+        .sort({ [`nomenclature.${version}.order`]: 1 })
+        .lean(),
+      Species.find({ downloadedAt: { $exists: true } }, [
+        "_id",
+        "sourceKey",
+        "license",
+        "licenseVer",
+        "author",
+        "downloadedAt",
+        "latestNomenclature",
+      ])
+        .sort({ downloadedAt: -1 })
+        .limit(8)
+        .lean(),
+      Species.countDocuments({ taxonVersions: version }),
+    ]);
 
-  const licenseStats = species.reduce((acc, { license }) => {
-    const licenseEntry = acc.find((l) => l.id === license);
-    if (licenseEntry) {
-      licenseEntry.count += 1;
-    } else {
-      acc.push({ id: license, label: LicenseLabel[license] || license, count: 1, percent: "0%" });
+    // Generate stats
+    if (isLatest) {
+      const withImg = species.filter((s) => s.downloadedAt).length;
+      const percentWithImg = ((withImg / totalSpecies) * 100).toFixed(1) + "%";
+
+      const licenseStats = species.reduce((acc, { license }) => {
+        const licenseEntry = acc.find((l) => l.id === license);
+        if (licenseEntry) {
+          licenseEntry.count += 1;
+        } else {
+          acc.push({ id: license, label: LicenseLabel[license] || license, count: 1, percent: "0%" });
+        }
+        return acc;
+      }, [] as Stats["license"]);
+
+      licenseStats
+        .sort((a, b) => a.label.length - b.label.length)
+        .forEach((l) => {
+          l.percent = ((l.count / totalSpecies) * 100).toFixed(1) + "%";
+        });
+
+      const sourceStats = species.reduce((acc, { source }) => {
+        const sourceEntry = acc.find((s) => s.id === source);
+        if (sourceEntry) {
+          sourceEntry.count += 1;
+        } else {
+          acc.push({ id: source, label: ImgSourceLabel[source] || source, count: 1, percent: "0%" });
+        }
+        return acc;
+      }, [] as Stats["source"]);
+
+      sourceStats.forEach((s) => {
+        s.percent = ((s.count / totalSpecies) * 100).toFixed(1) + "%";
+      });
+
+      const taxonVersions = Array.from(new Set(species.flatMap((s) => s.taxonVersions)));
+      const stats: Stats = {
+        total: totalSpecies,
+        withImg,
+        percent: percentWithImg,
+        license: licenseStats,
+        source: sourceStats,
+        taxonVersions,
+      };
+
+      fs.writeFileSync(path.join(process.cwd(), "data", "stats.json"), JSON.stringify(stats, null, 2));
     }
-    return acc;
-  }, [] as Stats["license"]);
 
-  licenseStats
-    .sort((a, b) => a.label.length - b.label.length)
-    .forEach((l) => {
-      l.percent = ((l.count / totalSpecies) * 100).toFixed(1) + "%";
-    });
+    // Generate species data
+    const data = species
+      .filter((s) => s.downloadedAt)
+      .map((it) => ({
+        code: it._id,
+        name: it.nomenclature[version].name,
+        sciName: it.nomenclature[version].sciName,
+        license: it.licenseVer ? `${LicenseLabel[it.license] || it.license} ${it.licenseVer}` : it.license,
+        key: it.sourceKey,
+        by: it.author,
+        family: it.nomenclature[version].familyCode,
+      }));
 
-  const sourceStats = species.reduce((acc, { source }) => {
-    const sourceEntry = acc.find((s) => s.id === source);
-    if (sourceEntry) {
-      sourceEntry.count += 1;
-    } else {
-      acc.push({ id: source, label: ImgSourceLabel[source] || source, count: 1, percent: "0%" });
+    const dataLite = data.reduce<Record<string, string[]>>((acc, it) => {
+      acc[it.code] = [it.key, it.by];
+      return acc;
+    }, {});
+
+    fs.writeFileSync(path.join(process.cwd(), "public", `${version}.json`), JSON.stringify(data));
+    fs.writeFileSync(path.join(process.cwd(), "public", `${version}-lite.json`), JSON.stringify(dataLite));
+
+    if (isLatest) {
+      fs.writeFileSync(path.join(process.cwd(), "public", "latest.json"), JSON.stringify(data));
+      fs.writeFileSync(path.join(process.cwd(), "public", "latest-lite.json"), JSON.stringify(dataLite));
     }
-    return acc;
-  }, [] as Stats["source"]);
 
-  sourceStats.forEach((s) => {
-    s.percent = ((s.count / totalSpecies) * 100).toFixed(1) + "%";
-  });
+    // Generate recently downloaded
+    if (isLatest) {
+      const recentlyDownloadedFormatted = recentlyDownloaded.map((it) => ({
+        code: it._id,
+        name: it.latestNomenclature.name,
+        sciName: it.latestNomenclature.sciName,
+        license: it.licenseVer ? `${LicenseLabel[it.license] || it.license} ${it.licenseVer}` : it.license,
+        key: it.sourceKey,
+        author: it.author,
+        downloadedAt: it.downloadedAt,
+      }));
 
-  const taxonVersions = Array.from(new Set(species.flatMap((s) => s.taxonVersions)));
-
-  const stats: Stats = {
-    total: totalSpecies,
-    withImg,
-    percent: percentWithImg,
-    license: licenseStats,
-    source: sourceStats,
-    taxonVersions,
-  };
-
-  fs.writeFileSync(path.join(process.cwd(), "data", "stats.json"), JSON.stringify(stats, null, 2));
-
-  const data = species
-    .filter((s) => s.downloadedAt)
-    .map((it) => ({
-      code: it._id,
-      name: it.name,
-      sciName: it.sciName,
-      license: it.licenseVer ? `${LicenseLabel[it.license] || it.license} ${it.licenseVer}` : it.license,
-      key: it.sourceKey,
-      by: it.author,
-      family: it.familyCode,
-    }));
-
-  const dataLite = data.reduce<Record<string, string[]>>((acc, it) => {
-    acc[it.code] = [it.key, it.by];
-    return acc;
-  }, {});
-
-  fs.writeFileSync(path.join(process.cwd(), "public", "latest.json"), JSON.stringify(data));
-  fs.writeFileSync(path.join(process.cwd(), "public", "latest-lite.json"), JSON.stringify(dataLite));
-
-  const recentlyDownloadedFormatted = recentlyDownloaded.map((it) => ({
-    code: it._id,
-    name: it.name,
-    sciName: it.sciName,
-    license: it.licenseVer ? `${LicenseLabel[it.license] || it.license} ${it.licenseVer}` : it.license,
-    key: it.sourceKey,
-    author: it.author,
-    downloadedAt: it.downloadedAt,
-  }));
-
-  fs.writeFileSync(
-    path.join(process.cwd(), "data", "recently-downloaded.json"),
-    JSON.stringify(recentlyDownloadedFormatted, null, 2)
-  );
+      fs.writeFileSync(
+        path.join(process.cwd(), "data", "recently-downloaded.json"),
+        JSON.stringify(recentlyDownloadedFormatted, null, 2)
+      );
+    }
+  }
 
   res.status(200).json({ success: true });
 }

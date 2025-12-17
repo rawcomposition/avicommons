@@ -62,7 +62,7 @@
   {
     "code": "phasia1",
     "name": "Pheasants, Grouse, and Allies",
-    "count": 186
+    "count": 187
   },
   {
     "code": "columb2",
@@ -92,7 +92,7 @@
   {
     "code": "cuculi1",
     "name": "Cuckoos",
-    "count": 155
+    "count": 156
   },
   {
     "code": "caprim2",
@@ -227,7 +227,7 @@
   {
     "code": "scolop2",
     "name": "Sandpipers and Allies",
-    "count": 97
+    "count": 98
   },
   {
     "code": "turnic1",
@@ -257,7 +257,7 @@
   {
     "code": "larida1",
     "name": "Gulls, Terns, and Skimmers",
-    "count": 103
+    "count": 105
   },
   {
     "code": "phoeni1",
@@ -297,7 +297,7 @@
   {
     "code": "spheni1",
     "name": "Penguins",
-    "count": 18
+    "count": 19
   },
   {
     "code": "diomed1",
@@ -317,7 +317,7 @@
   {
     "code": "procel3",
     "name": "Shearwaters and Petrels",
-    "count": 99
+    "count": 100
   },
   {
     "code": "ciconi2",
@@ -342,7 +342,7 @@
   {
     "code": "phalac1",
     "name": "Cormorants and Shags",
-    "count": 40
+    "count": 34
   },
   {
     "code": "thresk1",
@@ -352,7 +352,7 @@
   {
     "code": "ardeid1",
     "name": "Herons, Egrets, and Bitterns",
-    "count": 72
+    "count": 74
   },
   {
     "code": "scopid1",
@@ -397,7 +397,7 @@
   {
     "code": "strigi1",
     "name": "Owls",
-    "count": 229
+    "count": 228
   },
   {
     "code": "coliid1",
@@ -412,7 +412,7 @@
   {
     "code": "trogon1",
     "name": "Trogons",
-    "count": 46
+    "count": 47
   },
   {
     "code": "upupid1",
@@ -425,14 +425,9 @@
     "count": 8
   },
   {
-    "code": "bucorv1",
-    "name": "Ground-Hornbills",
-    "count": 2
-  },
-  {
     "code": "bucero1",
     "name": "Hornbills",
-    "count": 62
+    "count": 64
   },
   {
     "code": "meropi1",
@@ -497,7 +492,7 @@
   {
     "code": "rampha1",
     "name": "Toucans",
-    "count": 36
+    "count": 37
   },
   {
     "code": "indica1",
@@ -537,7 +532,7 @@
   {
     "code": "psitta3",
     "name": "New World and African Parrots",
-    "count": 177
+    "count": 183
   },
   {
     "code": "acanth1",
@@ -572,7 +567,7 @@
   {
     "code": "thamno3",
     "name": "Typical Antbirds",
-    "count": 237
+    "count": 238
   },
   {
     "code": "melano2",
@@ -597,12 +592,12 @@
   {
     "code": "formic2",
     "name": "Antthrushes",
-    "count": 12
+    "count": 13
   },
   {
     "code": "furnar2",
     "name": "Ovenbirds and Woodcreepers",
-    "count": 318
+    "count": 321
   },
   {
     "code": "piprid1",
@@ -632,7 +627,7 @@
   {
     "code": "tyrann2",
     "name": "Tyrant Flycatchers",
-    "count": 440
+    "count": 442
   },
   {
     "code": "menuri1",
@@ -647,7 +642,7 @@
   {
     "code": "ptilon1",
     "name": "Bowerbirds",
-    "count": 27
+    "count": 23
   },
   {
     "code": "climac1",
@@ -697,7 +692,7 @@
   {
     "code": "campep2",
     "name": "Cuckooshrikes",
-    "count": 109
+    "count": 108
   },
   {
     "code": "mohoui1",
@@ -737,12 +732,12 @@
   {
     "code": "vireon1",
     "name": "Vireos, Shrike-Babblers, and Erpornis",
-    "count": 61
+    "count": 65
   },
   {
     "code": "pachyc2",
     "name": "Whistlers and Allies",
-    "count": 67
+    "count": 61
   },
   {
     "code": "orioli1",
@@ -1077,7 +1072,7 @@
   {
     "code": "turdid1",
     "name": "Thrushes and Allies",
-    "count": 192
+    "count": 194
   },
   {
     "code": "muscic3",
@@ -1166,7 +1161,7 @@
   },
   {
     "code": "viduid1",
-    "name": "Indigobirds",
+    "name": "Whydahs and Indigobirds",
     "count": 20
   },
   {
@@ -1207,7 +1202,7 @@
   {
     "code": "passer3",
     "name": "New World Sparrows",
-    "count": 135
+    "count": 138
   },
   {
     "code": "calypt2",
@@ -1216,18 +1211,8 @@
   },
   {
     "code": "phaeni1",
-    "name": "Hispaniolan Tanagers",
-    "count": 4
-  },
-  {
-    "code": "nesosp1",
-    "name": "Puerto Rican Tanager",
-    "count": 1
-  },
-  {
-    "code": "spinda1",
-    "name": "Spindalises",
-    "count": 4
+    "name": "Greater Antillean Tanagers",
+    "count": 9
   },
   {
     "code": "zeledo1",
@@ -1252,7 +1237,7 @@
   {
     "code": "paruli1",
     "name": "New World Warblers",
-    "count": 115
+    "count": 116
   },
   {
     "code": "mitros1",
@@ -1262,11 +1247,11 @@
   {
     "code": "cardin1",
     "name": "Cardinals and Allies",
-    "count": 51
+    "count": 52
   },
   {
     "code": "thraup2",
     "name": "Tanagers and Allies",
-    "count": 384
+    "count": 389
   }
 ]

@@ -2,27 +2,29 @@ import mongoose from "mongoose";
 import { SpeciesT } from "lib/types";
 const { Schema, model, models } = mongoose;
 
+const NomenclatureSchema = new Schema(
+  {
+    name: String,
+    sciName: String,
+    familyCode: String,
+    order: Number,
+    isExtinct: Boolean,
+  },
+  { _id: false }
+);
+
 const SpeciesSchema = new Schema({
   _id: {
     type: String,
     required: true,
   },
   sourceKey: String,
-  name: {
-    type: String,
-    required: true,
-  },
-  sciName: {
-    type: String,
-    required: true,
-  },
-  order: {
-    type: Number,
-    required: true,
-  },
-  isExtinct: {
-    type: Boolean,
-    default: false,
+  taxonVersions: [String],
+  latestNomenclature: NomenclatureSchema,
+  nomenclature: {
+    type: Map,
+    of: NomenclatureSchema,
+    default: {},
   },
   source: String,
   sourceId: String,
@@ -51,8 +53,6 @@ const SpeciesSchema = new Schema({
     default: true,
   },
   downloadedAt: Date,
-  familyCode: String,
-  taxonVersions: [String],
   flip: Boolean,
   isProcessed: Boolean,
   isUploaded: Boolean,

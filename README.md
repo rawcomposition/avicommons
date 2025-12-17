@@ -1,4 +1,5 @@
 # Avicommons
+
 A library of hand-picked, cropped, and oriented bird photos licensed under creative commons licenses. View more details and examples at [avicommons.org](avicommons.org).
 
 ## Getting Started
@@ -9,27 +10,25 @@ To incorporate the photos into your website or app, you must download a JSON fil
 
 **Available sizes:** 240, 320, 480, 900
 
+**Available versions:** 2022, 2023, 2024, 2025
+
 ### 1. Lite Version
 
 Includes only the essential data in a compact format, useful if you plan to load the entire JSON file client side.
 
 **Size**: ~416 kb
 
-**URL**: `https://avicommons.org/latest-lite.json`
+**URL**: `https://avicommons.org/latest-lite.json` or `https://avicommons.org/2025-lite.json`
 
 **Example**
+
 ```json
 {
-  "ostric2": [
-    "338082926",
-    "Hannah Comstock"
-  ],
-  "ostric3": [
-    "90225592",
-    "Uday Agashe"
-  ]
+  "ostric2": ["338082926", "Hannah Comstock"],
+  "ostric3": ["90225592", "Uday Agashe"]
 }
 ```
+
 The object key is the eBird species code.
 The object value is array that contains the photo ID followed by the attribution name (photographer).
 
@@ -41,9 +40,10 @@ Includes a more complete set of data for each photo. Useful if you want to use s
 
 **Size**: ~1.6 mb
 
-**URL**: `https://avicommons.org/latest.json`
+**URL**: `https://avicommons.org/latest.json` or `https://avicommons.org/2025.json`
 
 **Example**
+
 ```json
 [
   {

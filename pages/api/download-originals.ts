@@ -22,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     },
     ["source", "sourceId", "sourceKey", "iNatFileExt"]
   )
-    .sort({ order: 1 })
+    .sort({ "latestNomenclature.order": 1 })
     .limit(LIMIT)
     .lean();
 

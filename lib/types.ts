@@ -40,13 +40,20 @@ export const LicenseLabel: Record<License, string> = {
   "cc-by-sa": "CC BY-SA",
 };
 
+export type Nomenclature = {
+  name: string;
+  sciName: string;
+  familyCode: string;
+  order: number;
+  isExtinct?: boolean;
+};
+
 export type SpeciesT = {
   _id: string;
   sourceKey: string;
-  name: string;
-  sciName: string;
-  order: number;
-  isExtinct: boolean;
+  taxonVersions: string[];
+  latestNomenclature: Nomenclature;
+  nomenclature: Record<string, Nomenclature>;
   source: ImgSource;
   sourceId: string;
   author: string;
@@ -58,8 +65,6 @@ export type SpeciesT = {
   iNatFileExt?: string;
   iNatUserId?: string;
   downloadedAt?: Date;
-  familyCode: string;
-  taxonVersions: string[];
   flip: boolean;
   isProcessed: boolean;
   isUploaded: boolean;

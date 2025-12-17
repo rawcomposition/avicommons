@@ -187,12 +187,12 @@ export default function Import({ data, code }: Props) {
           <div className="max-w-2xl mx-auto">
             <div className=" bg-white space-y-6">
               <div>
-                <h2 className="text-xl font-bold text-gray-600 mb-1">{data.name}</h2>
-                <h3 className="text-md text-gray-500 italic">{data.sciName}</h3>
+                <h2 className="text-xl font-bold text-gray-600 mb-1">{data.latestNomenclature.name}</h2>
+                <h3 className="text-md text-gray-500 italic">{data.latestNomenclature.sciName}</h3>
                 <div className="flex gap-4 border-b pb-2.5 mt-1">
                   <Link
                     className="text-sky-600 hover:text-sky-700 font-semibold"
-                    href={`https://www.google.com/search?q=${data.name}`}
+                    href={`https://www.google.com/search?q=${data.latestNomenclature.name}`}
                     target="_blank"
                   >
                     Google
@@ -206,14 +206,14 @@ export default function Import({ data, code }: Props) {
                   </Link>
                   <Link
                     className="text-sky-600 hover:text-sky-700 font-semibold"
-                    href={`https://www.flickr.com/search/?text=${data.name}&license=2%2C3%2C4%2C5%2C6%2C9`}
+                    href={`https://www.flickr.com/search/?text=${data.latestNomenclature.name}&license=2%2C3%2C4%2C5%2C6%2C9`}
                     target="_blank"
                   >
                     Flickr
                   </Link>
                   <Link
                     className="text-sky-600 hover:text-sky-700 font-semibold"
-                    href={`https://commons.wikimedia.org/w/index.php?search=${data.sciName}&title=Special:MediaSearch&go=Go&type=image`}
+                    href={`https://commons.wikimedia.org/w/index.php?search=${data.latestNomenclature.sciName}&title=Special:MediaSearch&go=Go&type=image`}
                     target="_blank"
                   >
                     Wikipedia
@@ -223,14 +223,14 @@ export default function Import({ data, code }: Props) {
                     className="text-sky-600 hover:text-sky-700 font-semibold"
                     onClick={() => {
                       open(
-                        `https://www.inaturalist.org/observations?q=${data.sciName}&photo_license=cc0,cc-by-nc-sa,cc-by-sa,cc-by-nc,cc-by`,
+                        `https://www.inaturalist.org/observations?q=${data.latestNomenclature.sciName}&photo_license=cc0,cc-by-nc-sa,cc-by-sa,cc-by-nc,cc-by`,
                         "_blank"
                       );
                       open(
-                        `https://www.inaturalist.org/observations?q=${data.sciName}&photo_license=cc0,cc-by-nc-sa,cc-by-sa,cc-by-nc,cc-by&order_by=votes`,
+                        `https://www.inaturalist.org/observations?q=${data.latestNomenclature.sciName}&photo_license=cc0,cc-by-nc-sa,cc-by-sa,cc-by-nc,cc-by&order_by=votes`,
                         "_blank"
                       );
-                      open(`https://www.inaturalist.org/taxa/${data.sciName}`, "_blank");
+                      open(`https://www.inaturalist.org/taxa/${data.latestNomenclature.sciName}`, "_blank");
                     }}
                   >
                     iNat CC
@@ -318,11 +318,11 @@ export default function Import({ data, code }: Props) {
                 }
               />
 
-              {sourceInfo?.info?.speciesName && sourceInfo?.info?.speciesName !== data.sciName && (
+              {sourceInfo?.info?.speciesName && sourceInfo?.info?.speciesName !== data.latestNomenclature.sciName && (
                 <div className="bg-amber-50 p-4 rounded-md">
                   <p className="text-sm text-amber-700">
                     The iNaturalist scientific name <strong>{sourceInfo?.info?.speciesName}</strong> does not match{" "}
-                    <strong>{data.sciName}</strong>.
+                    <strong>{data.latestNomenclature.sciName}</strong>.
                   </p>
                 </div>
               )}
