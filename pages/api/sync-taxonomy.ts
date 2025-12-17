@@ -93,7 +93,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         insertOne: {
           document: {
             _id: item.speciesCode,
-            [`nomenclature.${VERSION}`]: nomenclature,
+            nomenclature: { [VERSION]: nomenclature },
             latestNomenclature: nomenclature,
             taxonVersions: [VERSION.toString()],
           },
