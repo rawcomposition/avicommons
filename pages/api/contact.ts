@@ -24,6 +24,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(500).json({ error: "Email configuration missing" });
   }
 
+  // Basic spam detection
+  if (message.toUpperCase().includes("SEO") || email.split(".").length > 5) {
+    return res.status(200).json({ success: true });
+  }
+
   try {
     await resend.emails.send({
       from: process.env.RESEND_EMAIL,
