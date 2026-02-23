@@ -6,7 +6,6 @@ import { ImgSourceLabel, LicenseLabel, SpeciesT } from "lib/types";
 import Species from "models/Species";
 import AdminPage from "components/AdminPage";
 import { getUrl } from "lib/species";
-import clsx from "clsx";
 import connect from "lib/mongo";
 import Families from "data/taxon-families.json";
 import SelectBasic from "components/ReactSelectStyled";
@@ -24,6 +23,7 @@ type Props = {
   withoutImgCount: number;
   filter: string;
   family: string;
+  sort: string;
   startCount: number;
 };
 
@@ -37,6 +37,7 @@ export default function SpeciesList({
   withoutImgCount,
   filter,
   family,
+  sort,
   startCount,
 }: Props) {
   const router = useRouter();
@@ -51,44 +52,69 @@ export default function SpeciesList({
             Images: <span className="font-bold">{percentWithImg}%</span>
           </p>
         </div>
-        <div className="flex gap-4 mb-6 items-center">
-          <Link
-            href={`/manage?page=1&filter=all&family=${family}`}
-            className={clsx(
-              "px-5 py-1 rounded-full font-medium",
-              !filter || filter === "all" ? "bg-primary text-white" : "bg-gray-200 text-gray-600"
-            )}
-          >
-            All ({totalCount.toLocaleString()})
-          </Link>
-          <Link
-            href={`/manage?page=1&filter=withoutImg&family=${family}`}
-            className={clsx(
-              "px-5 py-1 rounded-full font-medium",
-              filter === "withoutImg" ? "bg-primary text-white" : "bg-gray-200 text-gray-600"
-            )}
-          >
-            Without Image ({withoutImgCount.toLocaleString()})
-          </Link>
+        <div className="flex gap-4 items-center">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Image Status</label>
+            <SelectBasic
+              options={[
+                { label: `All (${totalCount.toLocaleString()})`, value: "all" },
+                { label: `Without Image (${withoutImgCount.toLocaleString()})`, value: "withoutImg" },
+              ]}
+              onChange={(selectedOption) => {
+                if (selectedOption) {
+                  router.push(`/manage?page=1&filter=${selectedOption.value}&family=${family}&sort=${sort}`);
+                }
+              }}
+              value={
+                filter === "withoutImg"
+                  ? { label: `Without Image (${withoutImgCount.toLocaleString()})`, value: "withoutImg" }
+                  : { label: `All (${totalCount.toLocaleString()})`, value: "all" }
+              }
+              className="w-[220px]"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Family</label>
+            <SelectBasic
+              options={Families.map((family) => ({ label: `${family.name} (${family.count})`, value: family.code }))}
+              onChange={(selectedOption) => {
+                if (selectedOption) {
+                  router.push(`/manage?page=1&filter=${filter}&family=${selectedOption.value}&sort=${sort}`);
+                } else {
+                  router.push(`/manage?page=1&filter=${filter}&sort=${sort}`);
+                }
+              }}
+              value={
+                selectedFamily
+                  ? { label: `${selectedFamily.name} (${selectedFamily.count})`, value: selectedFamily.code }
+                  : undefined
+              }
+              placeholder="Filter by family"
+              className="w-[260px]"
+              isClearable
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Sort By</label>
+            <SelectBasic
+              options={[
+                { label: "Taxonomic", value: "taxonomic" },
+                { label: "Downloaded At", value: "downloadedAt" },
+              ]}
+              onChange={(selectedOption) => {
+                if (selectedOption) {
+                  router.push(`/manage?page=1&filter=${filter}&family=${family}&sort=${selectedOption.value}`);
+                }
+              }}
+              value={
+                sort === "downloadedAt"
+                  ? { label: "Downloaded At", value: "downloadedAt" }
+                  : { label: "Taxonomic", value: "taxonomic" }
+              }
+              className="w-[200px]"
+            />
+          </div>
         </div>
-        <SelectBasic
-          options={Families.map((family) => ({ label: `${family.name} (${family.count})`, value: family.code }))}
-          onChange={(selectedOption) => {
-            if (selectedOption) {
-              router.push(`/manage?page=1&filter=${filter}&family=${selectedOption.value}`);
-            } else {
-              router.push(`/manage?page=1&filter=${filter}`);
-            }
-          }}
-          value={
-            selectedFamily
-              ? { label: `${selectedFamily.name} (${selectedFamily.count})`, value: selectedFamily.code }
-              : undefined
-          }
-          placeholder="Filter by family"
-          className="w-[260px]"
-          isClearable
-        />
         <p className="mb-4 font-medium mt-6">
           Filtered count: <strong>{filteredCount.toLocaleString()}</strong>
         </p>
@@ -180,7 +206,7 @@ export default function SpeciesList({
         <div className="mt-8 flex justify-center">
           {currentPage > 1 && (
             <Link
-              href={`/manage?page=${currentPage - 1}&filter=${filter}&family=${family}`}
+              href={`/manage?page=${currentPage - 1}&filter=${filter}&family=${family}&sort=${sort}`}
               className="mx-2 px-4 py-2 bg-primary hover:bg-secondary text-white rounded"
             >
               Previous
@@ -191,7 +217,7 @@ export default function SpeciesList({
           </span>
           {currentPage < totalPages && (
             <Link
-              href={`/manage?page=${currentPage + 1}&filter=${filter}&family=${family}`}
+              href={`/manage?page=${currentPage + 1}&filter=${filter}&family=${family}&sort=${sort}`}
               className="mx-2 px-4 py-2 bg-primary hover:bg-secondary text-white rounded"
             >
               Next
@@ -213,6 +239,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const skip = (page - 1) * limit;
   const filter = context.query.filter || "all";
   const family = context.query.family || "all";
+  const sort = context.query.sort || "taxonomic";
 
   const baseQuery = { active: true };
   let query: any = baseQuery;
@@ -243,7 +270,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     "author",
     "sourceKey",
   ])
-    .sort({ "latestNomenclature.order": 1 })
+    .sort(sort === "downloadedAt" ? { downloadedAt: -1 } : { "latestNomenclature.order": 1 })
     .skip(skip)
     .limit(limit);
 
@@ -260,6 +287,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       withoutImgCount: totalCount - withImgCount,
       filter,
       family,
+      sort,
       startCount,
     },
   };

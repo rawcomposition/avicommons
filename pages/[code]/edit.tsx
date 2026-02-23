@@ -116,6 +116,12 @@ export default function Import({ data, code }: Props) {
     },
   });
 
+  const purgeCacheMutation = useMutation({
+    url: `/api/${code}/purge-cache`,
+    method: "POST",
+    successMessage: "Cache purged",
+  });
+
   const handleSubmit: SubmitHandler<SpeciesInput> = async (data) => {
     if (!data.sourceId) {
       toast.error("Please enter a source ID");
@@ -331,10 +337,18 @@ export default function Import({ data, code }: Props) {
               <button
                 type="button"
                 onClick={handleRemove}
-                className="font-medium mr-auto text-red-700 rounded-md border border-red-700 px-3 py-1.5 opacity-70 hover:opacity-100"
+                className="font-medium text-red-700 rounded-md border border-red-700 px-3 py-1.5 opacity-70 hover:opacity-100"
                 disabled={mutation.isPending}
               >
                 Remove Image
+              </button>
+              <button
+                type="button"
+                onClick={() => purgeCacheMutation.mutate({})}
+                className="font-medium mr-auto text-gray-700 rounded-md border border-gray-400 px-3 py-1.5 opacity-70 hover:opacity-100"
+                disabled={purgeCacheMutation.isPending || !data.sourceKey}
+              >
+                Purge Cache
               </button>
               <Checkbox name="flip" label="Flip Image" />
               <Submit disabled={mutation.isPending} color="green" className="font-medium">
