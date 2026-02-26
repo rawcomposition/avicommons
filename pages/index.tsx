@@ -104,23 +104,25 @@ export default function Landing() {
             />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
               {paginatedPhotos.map((item) => (
-                <div key={item.code} className="bg-white rounded shadow overflow-hidden flex">
-                  <img
-                    src={getUrl(item.code, item.key, "240")}
-                    alt={item.name}
-                    className="w-[120px] aspect-[4/3]"
-                    loading="lazy"
-                  />
-                  <div className="p-4">
-                    <h4 className="font-bold text-gray-800 text-[16px]">{item.name}</h4>
-                    <p className="text-sm text-gray-600 mt-2">
-                      <span className="font-medium">{item.by}</span>{" "}
-                      <span className="bg-gray-200/70 rounded-md px-1.5 py-0.5 text-xs">
-                        {LicenseLabel[item.license as License] || item.license}
-                      </span>
-                    </p>
+                <Link key={item.code} href={`/species/${item.code}`}>
+                  <div className="bg-white rounded shadow overflow-hidden flex hover:shadow-md transition">
+                    <img
+                      src={getUrl(item.code, item.key, "240")}
+                      alt={item.name}
+                      className="w-[120px] aspect-[4/3]"
+                      loading="lazy"
+                    />
+                    <div className="p-4">
+                      <h4 className="font-bold text-gray-800 text-[16px]">{item.name}</h4>
+                      <p className="text-sm text-gray-600 mt-2">
+                        <span className="font-medium">{item.by}</span>{" "}
+                        <span className="bg-gray-200/70 rounded-md px-1.5 py-0.5 text-xs">
+                          {LicenseLabel[item.license as License] || item.license}
+                        </span>
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
             <p className="text-gray-500 text-sm mt-2">
@@ -161,21 +163,23 @@ export default function Landing() {
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
               {RecentlyDownloaded.map((item) => (
-                <div key={item.code} className="bg-white rounded shadow overflow-hidden">
-                  <img src={getUrl(item.code, item.key, "320")} alt={item.name} className="w-full aspect-[4/3]" />
-                  <div className="p-4">
-                    <p className="text-[13px] text-gray-600 leading-4 mb-1">
-                      {dayjs(item.downloadedAt).format("MMM DD, YYYY")}
-                    </p>
-                    <h4 className="font-bold text-gray-800 text-lg">{item.name}</h4>
-                    <p className="text-sm text-gray-600 mt-1">
-                      <span className="font-medium">{item.author}</span>{" "}
-                      <span className="bg-gray-200/70 rounded-md px-1.5 py-0.5 text-xs whitespace-nowrap">
-                        {LicenseLabel[item.license as License] || item.license}
-                      </span>
-                    </p>
+                <Link key={item.code} href={`/species/${item.code}`}>
+                  <div className="bg-white rounded shadow overflow-hidden hover:shadow-md transition">
+                    <img src={getUrl(item.code, item.key, "320")} alt={item.name} className="w-full aspect-[4/3]" />
+                    <div className="p-4">
+                      <p className="text-[13px] text-gray-600 leading-4 mb-1">
+                        {dayjs(item.downloadedAt).format("MMM DD, YYYY")}
+                      </p>
+                      <h4 className="font-bold text-gray-800 text-lg">{item.name}</h4>
+                      <p className="text-sm text-gray-600 mt-1">
+                        <span className="font-medium">{item.author}</span>{" "}
+                        <span className="bg-gray-200/70 rounded-md px-1.5 py-0.5 text-xs whitespace-nowrap">
+                          {LicenseLabel[item.license as License] || item.license}
+                        </span>
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

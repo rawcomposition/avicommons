@@ -102,6 +102,14 @@ export type Stats = {
   taxonVersions: string[];
 };
 
+export type SearchEntry = {
+  code: string;
+  name: string;
+  sciName: string;
+  key?: string;
+  isExtinct?: boolean;
+};
+
 export type OutputPhoto = {
   code: string;
   name: string;

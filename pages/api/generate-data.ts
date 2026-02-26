@@ -121,6 +121,29 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       fs.writeFileSync(path.join(process.cwd(), "public", "latest-lite.json"), JSON.stringify(dataLite));
     }
 
+    if (isLatest) {
+      const allSpecies = await Species.find(
+        { taxonVersions: version },
+        ["nomenclature", "sourceKey", "downloadedAt"]
+      )
+        .sort({ [`nomenclature.${version}.order`]: 1 })
+        .lean();
+
+      // Compact tuple format: [code, name, sciName, key, extinct?]
+      const searchData = allSpecies.map((s: any) => {
+        const tuple: (string | number)[] = [
+          s._id,
+          s.nomenclature[version].name,
+          s.nomenclature[version].sciName,
+          s.downloadedAt && s.sourceKey ? s.sourceKey : "",
+        ];
+        if (s.nomenclature[version].isExtinct) tuple.push(1);
+        return tuple;
+      });
+
+      fs.writeFileSync(path.join(process.cwd(), "public", "search.json"), JSON.stringify(searchData));
+    }
+
     // Generate recently downloaded
     if (isLatest) {
       const recentlyDownloadedFormatted = recentlyDownloaded.map((it) => ({
