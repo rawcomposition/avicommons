@@ -1,4 +1,5 @@
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import { getImageOutput, IMG_FORMATS, ImgFormat } from "lib/species";
 
 export const endpoint = "https://4d77687da34421941e1bbffa894936e5.r2.cloudflarestorage.com";
 export const bucket = "avicommons";
@@ -13,11 +14,15 @@ export const upload = async (file: Buffer, key: string) => {
     region: "auto",
   });
 
+  const ext = key.split(".").pop();
+  const contentType =
+    ext && IMG_FORMATS.includes(ext as ImgFormat) ? getImageOutput(ext as ImgFormat).contentType : "application/octet-stream";
+
   const uploadParams = {
     Bucket: bucket,
     Key: key,
     ACL: "public-read",
-    ContentType: "image/jpeg",
+    ContentType: contentType,
     Body: file,
     CacheControl: "max-age=15552000",
   };

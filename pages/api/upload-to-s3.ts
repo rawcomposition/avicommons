@@ -1,8 +1,7 @@
 import connect from "lib/mongo";
 import type { NextApiRequest, NextApiResponse } from "next";
 import Species from "models/Species";
-import { IMG_SIZES } from "lib/species";
-import path from "path";
+import { getResizedAbsolutePath, getResizedFilename, getUploadedThumbnailVariants } from "lib/thumbnails";
 import { upload } from "lib/s3";
 import { promises as fs } from "fs";
 
@@ -15,7 +14,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
   await connect();
 
-  const species = await Species.find({ crop: { $exists: true }, isUploaded: { $ne: true } }, ["_id", "sourceKey"])
+  const uploadVariants = getUploadedThumbnailVariants();
+
+  const species = await Species.find(
+    { crop: { $exists: true }, sourceKey: { $exists: true }, isUploaded: { $ne: true } },
+    ["_id", "sourceKey"]
+  )
     .sort({ "latestNomenclature.order": 1 })
     .limit(LIMIT)
     .lean();
@@ -25,9 +29,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   for (const { sourceKey, _id } of species) {
     try {
       await Promise.all(
-        IMG_SIZES.map(async (size) => {
-          const filename = `${_id}-${sourceKey}-${size}.jpg`;
-          const imgPath = path.join(process.cwd(), "resized", filename);
+        uploadVariants.map(async ({ size, format }) => {
+          const filename = getResizedFilename(_id, sourceKey, size, format);
+          const imgPath = getResizedAbsolutePath(_id, sourceKey, size, format);
           const buffer = await fs.readFile(imgPath);
           await upload(buffer, filename);
         })

@@ -2,8 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import connect from "lib/mongo";
 import Species from "models/Species";
 import { getUrl } from "lib/species";
-
-const sizes = ["240", "320", "480", "900"] as const;
+import { getUploadedThumbnailVariants } from "lib/thumbnails";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {
@@ -33,7 +32,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(400).json({ error: "No image to purge" });
     }
 
-    const files = sizes.map((size) => getUrl(code as string, species.sourceKey, size));
+    const files = getUploadedThumbnailVariants().map(({ size, format }) =>
+      getUrl(code as string, species.sourceKey, `${size}`, format)
+    );
 
     const response = await fetch(`https://api.cloudflare.com/client/v4/zones/${zoneId}/purge_cache`, {
       method: "POST",

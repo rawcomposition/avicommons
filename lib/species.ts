@@ -1,6 +1,43 @@
 import { ImgSource, License } from "lib/types";
 
-export const IMG_SIZES = [240, 320, 480, 900];
+export type ImgSize = 160 | 240 | 320 | 480 | 900;
+export const ALL_IMG_SIZES: readonly ImgSize[] = [160, 240, 320, 480, 900];
+export type ImgSizeString = `${ImgSize}`;
+export type ImgFormat = "jpg" | "webp";
+
+export const IMAGE_OUTPUTS: readonly {
+  format: ImgFormat;
+  sizes: readonly ImgSize[];
+  upload: boolean;
+  quality: number;
+  contentType: string;
+}[] = [
+  {
+    format: "jpg",
+    sizes: ALL_IMG_SIZES,
+    upload: true,
+    quality: 80,
+    contentType: "image/jpeg",
+  },
+  {
+    format: "webp",
+    sizes: [160],
+    upload: true,
+    quality: 74,
+    contentType: "image/webp",
+  },
+];
+
+export const IMG_FORMATS: readonly ImgFormat[] = IMAGE_OUTPUTS.map(({ format }) => format);
+export const IMG_SIZES: readonly ImgSize[] = [...new Set(IMAGE_OUTPUTS.flatMap(({ sizes }) => sizes))].sort(
+  (a, b) => a - b
+) as ImgSize[];
+
+export const getImageOutput = (format: ImgFormat) => {
+  const output = IMAGE_OUTPUTS.find((entry) => entry.format === format);
+  if (!output) throw new Error(`Unsupported image format: ${format}`);
+  return output;
+};
 
 type GetSourceUrlParams = {
   source: ImgSource;
@@ -279,6 +316,6 @@ export async function getSourceInfo(source: string, sourceId: string | undefined
 
 const AVICOMMONS_DOMAIN = "https://static.avicommons.org";
 
-export const getUrl = (code: string, key: string, size: "240" | "320" | "480" | "900" = "240") => {
-  return `${AVICOMMONS_DOMAIN}/${code}-${key}-${size}.jpg`;
+export const getUrl = (code: string, key: string, size: ImgSizeString = "240", format: ImgFormat = "jpg") => {
+  return `${AVICOMMONS_DOMAIN}/${code}-${key}-${size}.${format}`;
 };

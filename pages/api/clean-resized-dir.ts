@@ -1,7 +1,7 @@
 import connect from "lib/mongo";
 import type { NextApiRequest, NextApiResponse } from "next";
 import Species from "models/Species";
-import { IMG_SIZES } from "lib/species";
+import { getAllResizedRelativePaths, getExistingResizedFiles, RESIZED_DIR } from "lib/thumbnails";
 import fs from "fs";
 import path from "path";
 
@@ -14,13 +14,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
   await connect();
 
-  const species = await Species.find({ crop: { $exists: true } }, ["sourceKey"]);
-  const expectedResizedFiles = species.flatMap(({ _id, sourceKey }) =>
-    IMG_SIZES.map((size) => `${_id}-${sourceKey}-${size}.jpg`)
-  );
-
-  const resizedDir = path.join(process.cwd(), "resized");
-  const existingFiles = await fs.promises.readdir(resizedDir);
+  const species = await Species.find({ crop: { $exists: true }, sourceKey: { $exists: true } }, ["sourceKey"]);
+  const expectedResizedFiles = species.flatMap(({ _id, sourceKey }) => getAllResizedRelativePaths(_id, sourceKey));
+  const existingFiles = [...(await getExistingResizedFiles())];
 
   const extraFiles = existingFiles.filter((file) => !expectedResizedFiles.includes(file));
   const missingFiles = expectedResizedFiles.filter((file) => !existingFiles.includes(file));
@@ -36,7 +32,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     missingFiles.forEach((file) => console.log(file));
   } else {
     for (const file of extraFiles) {
-      await fs.promises.unlink(path.join(resizedDir, file));
+      await fs.promises.unlink(path.join(RESIZED_DIR, file));
     }
     console.log("Deleted", extraFiles.length, "extra files");
     console.log("Deleted", missingFiles.length, "missing files");

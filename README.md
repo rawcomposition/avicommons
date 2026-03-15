@@ -8,7 +8,7 @@ To incorporate the photos into your website or app, you must download a JSON fil
 
 **Note:** do **not** retrieve the JSON file on each page load, you must either manually download the file and include it in your app, or have it retrieved automatically at build time. This will ensure optimal load times and reduce bandwidth for Avicommons.
 
-**Available sizes:** 240, 320, 480, 900
+**Available sizes:** 160, 240, 320, 480, 900
 
 **Available versions:** 2022, 2023, 2024, 2025
 
