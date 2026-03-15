@@ -5,8 +5,6 @@ import { getResizedAbsolutePath, getResizedFilename, getUploadedThumbnailVariant
 import { upload } from "lib/s3";
 import { promises as fs } from "fs";
 
-const LIMIT = 10000;
-
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
   if (process.env.NODE_ENV !== "development") {
     return res.status(403).json({ success: false, error: "Not allowed" });
@@ -21,7 +19,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     ["_id", "sourceKey"]
   )
     .sort({ "latestNomenclature.order": 1 })
-    .limit(LIMIT)
     .lean();
 
   let count = 0;
