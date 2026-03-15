@@ -5,50 +5,35 @@ import Head from "next/head";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import ClientPage from "components/ClientPage";
-import { SearchEntry, License, LicenseLabel, ImgSource, ImgSourceLabel, SpeciesT } from "lib/types";
+import { License, LicenseLabel, ImgSource, ImgSourceLabel, SpeciesT } from "lib/types";
 import { getUrl, getSourceUrl } from "lib/species";
 
 export default function SpeciesDetail() {
   const router = useRouter();
   const { code } = router.query;
 
-  const { data: allSpecies, isLoading: searchLoading } = useQuery<SearchEntry[]>({
-    queryKey: ["search-index"],
-    queryFn: async () => {
-      const res = await fetch("/search.json");
-      const tuples: (string | number)[][] = await res.json();
-      return tuples.map((t) => ({
-        code: t[0] as string,
-        name: t[1] as string,
-        sciName: t[2] as string,
-        key: (t[3] as string) || undefined,
-        isExtinct: !!t[4],
-      }));
-    },
-    refetchOnWindowFocus: false,
-    staleTime: Infinity,
-  });
-
-  const { data: speciesData } = useQuery<{ species: SpeciesT }>({
+  const { data: species, isLoading } = useQuery<SpeciesT>({
     queryKey: ["/api/species", code],
     queryFn: async () => {
       const res = await fetch(`/api/species/${code}`);
-      return res.json();
+      const json = await res.json();
+      return json.species;
     },
     enabled: !!code,
     refetchOnWindowFocus: false,
   });
 
-  const entry = React.useMemo(() => allSpecies?.find((p) => p.code === code), [allSpecies, code]);
-  const species = speciesData?.species;
-  const hasImage = !!entry?.key;
+  const hasImage = !!species?.sourceKey && !!species?.downloadedAt;
+  const name = species?.latestNomenclature?.name;
+  const sciName = species?.latestNomenclature?.sciName;
+  const isExtinct = species?.latestNomenclature?.isExtinct;
 
   const sourceUrl = React.useMemo(() => {
     if (!species?.source || !species?.sourceId) return null;
     return getSourceUrl(species.source, species.sourceId, species.iNatObsId);
   }, [species]);
 
-  if (searchLoading) {
+  if (isLoading || (code && !species)) {
     return (
       <ClientPage>
         <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -58,7 +43,7 @@ export default function SpeciesDetail() {
     );
   }
 
-  if (!entry) {
+  if (!species) {
     return (
       <ClientPage>
         <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -77,13 +62,13 @@ export default function SpeciesDetail() {
     <ClientPage>
       <div className="min-h-screen bg-gray-50">
         <Head>
-          <title>{entry.name} - Avicommons</title>
+          <title>{name} - Avicommons</title>
           <meta
             name="description"
             content={
               hasImage
-                ? `${entry.name} (${entry.sciName}) - Creative Commons bird image by ${species?.author}`
-                : `${entry.name} (${entry.sciName}) - Avicommons`
+                ? `${name} (${sciName}) - Creative Commons bird image by ${species.author}`
+                : `${name} (${sciName}) - Avicommons`
             }
           />
         </Head>
@@ -96,8 +81,8 @@ export default function SpeciesDetail() {
           <div className="mt-6 bg-white rounded-lg shadow-lg overflow-hidden max-w-3xl mx-auto">
             {hasImage ? (
               <img
-                src={getUrl(entry.code, entry.key!, "900")}
-                alt={entry.name}
+                src={getUrl(species._id, species.sourceKey, "900")}
+                alt={name}
                 className="w-full aspect-[4/3] object-cover"
               />
             ) : (
@@ -107,16 +92,16 @@ export default function SpeciesDetail() {
             )}
             <div className="p-6">
               <h1 className="text-3xl font-bold text-gray-800">
-                {entry.name}
-                {entry.isExtinct && (
+                {name}
+                {isExtinct && (
                   <span className="ml-2 text-sm font-medium text-red-600 border border-red-300 rounded-md px-1.5 py-0.5 align-middle">
                     Extinct
                   </span>
                 )}
               </h1>
-              <p className="text-lg text-gray-500 italic mt-1">{entry.sciName}</p>
+              <p className="text-lg text-gray-500 italic mt-1">{sciName}</p>
 
-              {species && hasImage && (
+              {hasImage && (
                 <div className="mt-4 border-t pt-4">
                   <p className="text-sm text-gray-600">
                     Photo by <span className="font-medium">{species.author}</span>
