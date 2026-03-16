@@ -10,6 +10,7 @@ import connect from "lib/mongo";
 import Families from "data/taxon-families.json";
 import SelectBasic from "components/ReactSelectStyled";
 import { useRouter } from "next/router";
+import { VERSIONS } from "lib/config";
 
 const PER_PAGE = 200;
 
@@ -25,6 +26,7 @@ type Props = {
   family: string;
   sort: string;
   startCount: number;
+  newInLatest: boolean;
 };
 
 export default function SpeciesList({
@@ -39,9 +41,16 @@ export default function SpeciesList({
   family,
   sort,
   startCount,
+  newInLatest,
 }: Props) {
   const router = useRouter();
+  const latestVersion = VERSIONS[VERSIONS.length - 1];
   const selectedFamily = Families.find((f) => f.code === family);
+
+  const buildUrl = (overrides: Record<string, string | boolean>) => {
+    const params = { page: "1", filter, family, sort, newInLatest: String(newInLatest), ...overrides };
+    return `/manage?page=${params.page}&filter=${params.filter}&family=${params.family}&sort=${params.sort}&newInLatest=${params.newInLatest}`;
+  };
 
   return (
     <AdminPage title="Species List">
@@ -62,7 +71,7 @@ export default function SpeciesList({
               ]}
               onChange={(selectedOption) => {
                 if (selectedOption) {
-                  router.push(`/manage?page=1&filter=${selectedOption.value}&family=${family}&sort=${sort}`);
+                  router.push(buildUrl({ filter: selectedOption.value }));
                 }
               }}
               value={
@@ -79,9 +88,9 @@ export default function SpeciesList({
               options={Families.map((family) => ({ label: `${family.name} (${family.count})`, value: family.code }))}
               onChange={(selectedOption) => {
                 if (selectedOption) {
-                  router.push(`/manage?page=1&filter=${filter}&family=${selectedOption.value}&sort=${sort}`);
+                  router.push(buildUrl({ family: selectedOption.value }));
                 } else {
-                  router.push(`/manage?page=1&filter=${filter}&sort=${sort}`);
+                  router.push(buildUrl({ family: "all" }));
                 }
               }}
               value={
@@ -103,7 +112,7 @@ export default function SpeciesList({
               ]}
               onChange={(selectedOption) => {
                 if (selectedOption) {
-                  router.push(`/manage?page=1&filter=${filter}&family=${family}&sort=${selectedOption.value}`);
+                  router.push(buildUrl({ sort: selectedOption.value }));
                 }
               }}
               value={
@@ -114,6 +123,17 @@ export default function SpeciesList({
               className="w-[200px]"
             />
           </div>
+        </div>
+        <div className="mt-3">
+          <label className="flex items-center gap-2 text-sm font-medium text-gray-700 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={newInLatest}
+              onChange={(e) => router.push(buildUrl({ newInLatest: e.target.checked }))}
+              className="rounded"
+            />
+            New in {latestVersion}
+          </label>
         </div>
         <p className="mb-4 font-medium mt-6">
           Filtered count: <strong>{filteredCount.toLocaleString()}</strong>
@@ -206,7 +226,7 @@ export default function SpeciesList({
         <div className="mt-8 flex justify-center">
           {currentPage > 1 && (
             <Link
-              href={`/manage?page=${currentPage - 1}&filter=${filter}&family=${family}&sort=${sort}`}
+              href={buildUrl({ page: String(currentPage - 1) })}
               className="mx-2 px-4 py-2 bg-primary hover:bg-secondary text-white rounded"
             >
               Previous
@@ -217,7 +237,7 @@ export default function SpeciesList({
           </span>
           {currentPage < totalPages && (
             <Link
-              href={`/manage?page=${currentPage + 1}&filter=${filter}&family=${family}&sort=${sort}`}
+              href={buildUrl({ page: String(currentPage + 1) })}
               className="mx-2 px-4 py-2 bg-primary hover:bg-secondary text-white rounded"
             >
               Next
@@ -240,6 +260,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const filter = context.query.filter || "all";
   const family = context.query.family || "all";
   const sort = context.query.sort || "taxonomic";
+  const newInLatest = context.query.newInLatest === "true";
+  const latestVersion = VERSIONS[VERSIONS.length - 1];
 
   const baseQuery = { active: true };
   let query: any = baseQuery;
@@ -248,6 +270,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
   if (family !== "all") {
     query = { ...query, "latestNomenclature.familyCode": family };
+  }
+  if (newInLatest) {
+    query = { ...query, taxonVersions: [latestVersion] };
   }
 
   await connect();
@@ -289,6 +314,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       family,
       sort,
       startCount,
+      newInLatest,
     },
   };
 };
