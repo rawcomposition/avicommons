@@ -30,6 +30,11 @@ type FileSizeResult = {
   }[];
 };
 
+type SyncOperationResult = {
+  message?: string;
+  [key: string]: any;
+};
+
 type SyncCount = {
   operation: string;
   count: number;
@@ -64,6 +69,12 @@ const SYNC_OPERATIONS: SyncOperation[] = [
 
 const ADDITIONAL_OPERATIONS: SyncOperation[] = [
   {
+    id: "upload-missing-to-s3",
+    name: "Upload Missing",
+    description: "Scan S3 for missing uploaded images, compare against expected thumbnails, and restore any gaps",
+    endpoint: "/api/upload-missing-to-s3",
+  },
+  {
     id: "regenerate-missing-thumbnails",
     name: "Regenerate Missing Thumbnails",
     description: "Backfill any missing resized thumbnail files without resetting processed images",
@@ -97,11 +108,11 @@ export default function SyncPage() {
       if (!response.ok) throw new Error(`Failed to run ${operation.name}`);
       return response.json();
     },
-    onSuccess: (data, operation) => {
+    onSuccess: (data: SyncOperationResult, operation) => {
       if (operation.id === "calculate-file-sizes") {
-        setFileSizeResult(data);
+        setFileSizeResult(data as FileSizeResult);
       }
-      toast.success(`${operation.name} completed successfully!`);
+      toast.success(data.message || `${operation.name} completed successfully!`);
       setRunningOperations((prev) => {
         const newSet = new Set(prev);
         newSet.delete(operation.id);

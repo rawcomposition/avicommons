@@ -1,74 +1,74 @@
 [
   {
-    "code": "yesgro2",
-    "name": "Yellow-shouldered Grosbeak",
-    "sciName": "Parkerthraustes humeralis",
+    "code": "bkhtan2",
+    "name": "Black-hooded Tanager",
+    "sciName": "Stilpnia whitelyi",
     "license": "cc-by-nc",
-    "key": "456388988",
-    "author": "kreuchtnfleucht",
-    "downloadedAt": "2026-02-23T02:54:19.691Z"
+    "key": "595295209",
+    "author": "Arnaud Aury",
+    "downloadedAt": "2026-03-16T21:36:35.318Z"
   },
   {
-    "code": "comfin1",
-    "name": "Cochabamba Mountain Finch",
-    "sciName": "Poospiza garleppi",
-    "license": "cc-by",
-    "key": "586528496",
-    "author": "David F. Belmonte",
-    "downloadedAt": "2026-02-23T02:54:19.198Z"
+    "code": "manwar1",
+    "name": "Mangrove Yellow Warbler",
+    "sciName": "Setophaga petechia",
+    "license": "cc0",
+    "key": "506546093",
+    "author": "Adam Jackson",
+    "downloadedAt": "2026-03-16T21:36:34.987Z"
   },
   {
-    "code": "gyhbut3",
-    "name": "Black-billed Cnemoscopus",
-    "sciName": "Cnemoscopus chrysogaster",
+    "code": "yelwar1",
+    "name": "Northern Yellow Warbler",
+    "sciName": "Setophaga aestiva",
     "license": "cc-by-nc",
-    "key": "43748175",
-    "author": "Stephen John Davies",
-    "downloadedAt": "2026-02-23T02:54:18.884Z"
+    "key": "481360240",
+    "author": "Ian Campbell",
+    "downloadedAt": "2026-03-16T21:36:34.628Z"
   },
   {
-    "code": "gyhbut2",
-    "name": "Pink-billed Cnemoscopus",
-    "sciName": "Cnemoscopus rubrirostris",
+    "code": "yebbru2",
+    "name": "Yellow-breasted Brushfinch",
+    "sciName": "Atlapetes latinuchus",
     "license": "cc-by-nc",
-    "key": "343279817",
-    "author": "kcarrol2",
-    "downloadedAt": "2026-02-23T02:54:18.450Z"
+    "key": "358964910",
+    "author": "David Martin",
+    "downloadedAt": "2026-03-16T21:36:34.300Z"
   },
   {
-    "code": "greflo1",
-    "name": "Greater Flowerpiercer",
-    "sciName": "Diglossa major",
-    "license": "CC BY-NC 3.0",
-    "key": "617294115",
-    "author": "NINA WENÓLI",
-    "downloadedAt": "2026-02-23T02:54:18.066Z"
-  },
-  {
-    "code": "bkfdac2",
-    "name": "Black-faced Dacnis",
-    "sciName": "Dacnis lineata",
+    "code": "yebbru1",
+    "name": "Black-fronted Brushfinch",
+    "sciName": "Atlapetes nigrifrons",
     "license": "cc-by-nc",
-    "key": "221045715",
-    "author": "Matt and Kaysea Bruce",
-    "downloadedAt": "2026-02-23T02:54:17.838Z"
+    "key": "261422778",
+    "author": "Ryan Shaw",
+    "downloadedAt": "2026-03-16T21:36:33.713Z"
   },
   {
-    "code": "bkfdac1",
-    "name": "Yellow-tufted Dacnis",
-    "sciName": "Dacnis egregia",
+    "code": "whegrs2",
+    "name": "White-eared Ground-Sparrow",
+    "sciName": "Melozone leucotis",
     "license": "cc-by-nc",
-    "key": "611107572",
-    "author": "Jeffrey H. Skevington",
-    "downloadedAt": "2026-02-23T02:54:17.541Z"
+    "key": "468362872",
+    "author": "Liam Wolff",
+    "downloadedAt": "2026-03-16T21:36:33.375Z"
   },
   {
-    "code": "bkhtan1",
-    "name": "Black-headed Tanager",
-    "sciName": "Stilpnia cyanoptera",
+    "code": "pecspa3",
+    "name": "Pectoral Sparrow",
+    "sciName": "Arremon taciturnus",
     "license": "cc-by-nc",
-    "key": "454769921",
-    "author": "nature_with_krista",
-    "downloadedAt": "2026-02-23T02:54:17.308Z"
+    "key": "483694509",
+    "author": "Antonino Gonçalves Medina",
+    "downloadedAt": "2026-03-16T21:36:32.848Z"
+  },
+  {
+    "code": "pecspa2",
+    "name": "Yellow-mandibled Sparrow",
+    "sciName": "Arremon axillaris",
+    "license": "cc0",
+    "key": "345458669",
+    "author": "Dario Taraborelli",
+    "downloadedAt": "2026-03-16T21:36:32.578Z"
   }
 ]

@@ -8,8 +8,6 @@ import path from "path";
 const VERSION = 2025;
 const DRY_RUN = false;
 
-// TODO: Unset the nomenclature from main document object --------------------------------------------------
-
 const sanitizeComName = (comName: string) => {
   // Remove trailing hyphens which sometimes appear in older taxonomies
   if (comName.endsWith("-")) {

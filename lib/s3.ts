@@ -1,4 +1,4 @@
-import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import { ListObjectsV2Command, PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { getImageOutput, IMG_FORMATS, ImgFormat } from "lib/species";
 
 export const endpoint = "https://4d77687da34421941e1bbffa894936e5.r2.cloudflarestorage.com";
@@ -46,4 +46,24 @@ export const upload = async (file: Buffer, key: string) => {
       await sleep(RETRY_BASE_DELAY_MS * 2 ** (attempt - 1));
     }
   }
+};
+
+export const listAllObjectKeys = async () => {
+  const s3 = createClient();
+  const keys: string[] = [];
+  let continuationToken: string | undefined;
+
+  do {
+    const response = await s3.send(
+      new ListObjectsV2Command({
+        Bucket: bucket,
+        ContinuationToken: continuationToken,
+      })
+    );
+
+    keys.push(...(response.Contents?.flatMap((item) => (item.Key ? [item.Key] : [])) || []));
+    continuationToken = response.IsTruncated ? response.NextContinuationToken : undefined;
+  } while (continuationToken);
+
+  return keys;
 };

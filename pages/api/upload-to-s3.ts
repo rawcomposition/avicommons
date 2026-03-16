@@ -1,9 +1,7 @@
 import connect from "lib/mongo";
 import type { NextApiRequest, NextApiResponse } from "next";
 import Species from "models/Species";
-import { getResizedAbsolutePath, getResizedFilename, getUploadedThumbnailVariants } from "lib/thumbnails";
-import { upload } from "lib/s3";
-import { promises as fs } from "fs";
+import { uploadSpeciesThumbnails } from "lib/upload-thumbnails";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
   if (process.env.NODE_ENV !== "development") {
@@ -11,8 +9,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   }
 
   await connect();
-
-  const uploadVariants = getUploadedThumbnailVariants();
 
   const species = await Species.find(
     { crop: { $exists: true }, sourceKey: { $exists: true }, isUploaded: { $ne: true } },
@@ -25,14 +21,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
   for (const { sourceKey, _id } of species) {
     try {
-      await Promise.all(
-        uploadVariants.map(async ({ size, format }) => {
-          const filename = getResizedFilename(_id, sourceKey, size, format);
-          const imgPath = getResizedAbsolutePath(_id, sourceKey, size, format);
-          const buffer = await fs.readFile(imgPath);
-          await upload(buffer, filename);
-        })
-      );
+      const result = await uploadSpeciesThumbnails({ id: _id, sourceKey });
+      if (result.missingLocalPaths.length > 0) {
+        continue;
+      }
 
       await Species.updateOne({ _id }, { isUploaded: true });
       count++;
