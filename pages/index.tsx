@@ -185,24 +185,6 @@ export default function Landing() {
           </div>
         </section>
 
-        <footer className="bg-gray-800 text-white py-4">
-          <div className="container mx-auto text-center">
-            <p>
-              Developed and maintained by{" "}
-              <a href="https://rawcomposition.com" className="text-white hover:underline" target="_blank">
-                Adam Jackson
-              </a>
-              <span className="text-gray-500 mx-3">•</span>
-              <Link href="/contact" className="text-gray-300 hover:text-white">
-                Contact
-              </Link>
-              <span className="text-gray-500 mx-3">•</span>
-              <Link href="/suggest" className="text-gray-300 hover:text-white">
-                Suggest Image
-              </Link>
-            </p>
-          </div>
-        </footer>
       </div>
     </ClientPage>
   );

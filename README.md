@@ -68,3 +68,7 @@ Includes a more complete set of data for each photo. Useful if you want to use s
 ```
 
 **Example photo URL:** https://static.avicommons.org/ostric2-338082926-320.jpg
+
+## FAQ
+
+Have questions about licensing, image sources, or how Avicommons works? See our [FAQ](FAQ.md).

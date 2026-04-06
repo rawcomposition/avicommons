@@ -27,18 +27,18 @@ export default function ClientPage({ children }: ClientPageProps) {
   return (
     <>
       <header className="bg-white shadow">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div className="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
           <Link href="/">
-            <h1 className="text-3xl font-extrabold text-gray-800">Avicommons</h1>
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-800">Avicommons</h1>
           </Link>
           <nav className="flex items-center">
-            <Link href="/suggest" className="text-gray-700 hover:text-gray-900 px-4 font-medium">
+            <Link href="/suggest" className="hidden sm:inline text-gray-700 hover:text-gray-900 px-4 font-medium">
               Suggest Image
             </Link>
             <Link
               href="https://github.com/rawcomposition/avicommons?tab=readme-ov-file#getting-started"
               target="_blank"
-              className="text-gray-700 hover:text-gray-900 px-4 font-medium"
+              className="hidden sm:inline text-gray-700 hover:text-gray-900 px-4 font-medium"
             >
               Get Started
             </Link>
@@ -60,6 +60,25 @@ export default function ClientPage({ children }: ClientPageProps) {
         </div>
       </header>
       <main>{children}</main>
+      <footer className="bg-gray-800 text-white py-4">
+        <div className="container mx-auto text-center">
+          <p>
+            <span className="hidden sm:inline">Developed and maintained by</span>
+            <span className="sm:hidden">By</span>{" "}
+            <a href="https://rawcomposition.com" className="text-white hover:underline" target="_blank">
+              Adam Jackson
+            </a>
+            <span className="text-gray-500 mx-1.5 sm:mx-3">&bull;</span>
+            <Link href="/contact" className="text-gray-300 hover:text-white">
+              Contact
+            </Link>
+            <span className="text-gray-500 mx-1.5 sm:mx-3">&bull;</span>
+            <Link href="/suggest" className="text-gray-300 hover:text-white">
+              Suggest Image
+            </Link>
+          </p>
+        </div>
+      </footer>
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );
