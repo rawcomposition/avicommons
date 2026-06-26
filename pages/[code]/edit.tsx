@@ -205,7 +205,7 @@ export default function Import({ data, code }: Props) {
                   </Link>
                   <Link
                     className="text-sky-600 hover:text-sky-700 font-semibold"
-                    href={`https://ebird.org/species/${data._id}`}
+                    href={`https://media.ebird.org/catalog?sort=rating_rank_desc&view=grid&licenseId=li5,li8,li9,li10&taxonCode=${data._id}`}
                     target="_blank"
                   >
                     eBird

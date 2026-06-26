@@ -193,7 +193,7 @@ export default function SpeciesList({
                       </Link>
                       <Link
                         className="text-sky-600 hover:text-sky-700 font-semibold"
-                        href={`https://ebird.org/species/${species._id}`}
+                        href={`https://media.ebird.org/catalog?sort=rating_rank_desc&view=grid&licenseId=li5,li8,li9,li10&taxonCode=${species._id}`}
                         target="_blank"
                       >
                         eBird
